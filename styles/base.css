@@ -1,0 +1,11 @@
+@layer base {
+  html {
+    @apply font-general;
+  }
+
+  /* Example :
+  input[type='checkbox'] {
+    @apply relative m-0 h-4 w-4 shrink-0 appearance-none rounded-[0.2rem] border border-solid border-grey-200 bg-white-pure text-grey-100 shadow-md;
+  }
+  */
+}
