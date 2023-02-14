@@ -1,6 +1,6 @@
 @layer base {
   html {
-    @apply font-general;
+    @apply font-body;
   }
 
   /* Example :

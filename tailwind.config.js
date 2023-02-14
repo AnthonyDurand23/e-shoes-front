@@ -17,7 +17,8 @@ module.exports = {
       keyframes,
       animation,
       fontFamily: {
-        general: "'Montserrat', arial",
+        headings: "'Lora', sans-serif",
+        body: "'Inter', sans-serif",
       },
     },
   },
