@@ -5,13 +5,13 @@
   }
   */
   .header {
-    @apply w-full h-[60px] fixed flex justify-between items-center bg-primary-300;
+    @apply w-full h-[60px] xl:h-[80px] fixed pl-6 md:pl-8 xl:pl-14 pr-6 md:pr-8 xl:pr-14 flex justify-between items-center bg-primary-300;
   }
   .mobileMenuModal {
     @apply absolute top-0 right-0 w-[66%] h-full py-4 px-4 bg-primary-500;
   }
   .navbar {
-    @apply flex flex-col gap-8 h6 text-neutrals-900 uppercase;
+    @apply flex flex-col md:flex-row gap-8 md:gap-3 xl:gap-7 h6 md:text-base md:leading-tight xl:h5 text-neutrals-900 uppercase;
   }
   .navbar > * {
     @apply w-fit;
