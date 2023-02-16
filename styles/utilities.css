@@ -5,6 +5,7 @@
   }
   */
 
+  /* HEADINGS */
   .h1 {
     @apply font-headings text-5xl font-semibold leading-tight;
   }
@@ -29,6 +30,7 @@
     @apply font-headings text-lg font-semibold leading-tight;
   }
 
+  /* BODY */
   .p1-r {
     @apply font-body text-lg font-normal leading-normal;
   }
@@ -59,5 +61,14 @@
 
   .p4-b {
     @apply font-body text-xs font-medium leading-normal;
+  }
+
+  /* BUTTONS */
+  .bp-lg {
+    @apply w-fit h-[3.25rem] px-4 bg-neutrals-900 p1-b rounded-md shadow hover:opacity-95 hover:scale-105 transition-all duration-200;
+  }
+
+  .bp-sm {
+    @apply w-fit h-11 px-4 bg-neutrals-900 p2-b rounded-md shadow hover:opacity-95 hover:scale-105 transition-all duration-200;
   }
 }
