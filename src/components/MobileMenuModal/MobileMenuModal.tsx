@@ -29,7 +29,7 @@ const MobileMenuModal: React.FC<MobileMenuModalProps> = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-neutrals-900 bg-opacity-30" aria-hidden="true" />
+          <div className="fixed inset-0 z-10 bg-neutrals-900 bg-opacity-30" aria-hidden="true" />
         </Transition.Child>
         <Transition.Child
           as={Fragment}

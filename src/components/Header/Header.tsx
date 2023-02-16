@@ -16,9 +16,9 @@ const Header = () => {
   return (
     <header className="header">
       <div className="header-content">
-        <div className="w-[100px] xl:w-[134px] h-[60px] xl:h-[80px] relative">
+        <div className="w-[100px] xl:w-[134px] h-[60px] xl:h-[80px]">
           <Link href="/">
-            <Image src={Logo} alt="logo du site" fill />
+            <Image src={Logo} alt="logo du site" />
           </Link>
         </div>
         <div className="max-md:hidden">
