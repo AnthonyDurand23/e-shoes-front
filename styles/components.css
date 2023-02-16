@@ -5,7 +5,11 @@
   }
   */
   .header {
-    @apply w-full h-[60px] xl:h-[80px] fixed px-6 md:px-8 xl:px-14 flex justify-between items-center bg-primary-300;
+    @apply w-full h-[60px] xl:h-[80px] fixed px-6 md:px-8 xl:px-14 bg-primary-300;
+  }
+
+  .header-content {
+    @apply w-full max-width mx-auto flex justify-between items-center;
   }
 
   .mobileMenuModal {
@@ -13,7 +17,7 @@
   }
 
   .navbar {
-    @apply flex flex-col md:flex-row gap-8 md:gap-3 xl:gap-7 h6 md:text-base md:leading-tight xl:h5 text-neutrals-900 uppercase;
+    @apply flex flex-col md:flex-row gap-8 md:gap-3 xl:gap-10 h6 md:text-base md:leading-tight xl:h5 text-neutrals-900 uppercase;
   }
 
   .navbar > * {
@@ -25,6 +29,10 @@
   }
 
   .hero {
-    @apply px-6 md:px-8 xl:px-14 pb-12 md:pb-16 xl:pb-28 absolute top-[60px] xl:top-[80px] w-full h-[calc(100vh-60px)] xl:h-[calc(100vh-80px)] flex items-end;
+    @apply w-full absolute top-[60px] xl:top-[80px] h-[calc(100vh-60px)] xl:h-[calc(100vh-80px)] px-6 md:px-8 xl:px-14 py-12 md:py-16 xl:py-28;
+  }
+
+  .hero-content {
+    @apply w-full max-width mx-auto h-full flex items-end;
   }
 }

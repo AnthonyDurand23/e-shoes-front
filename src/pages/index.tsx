@@ -22,13 +22,17 @@ const Home = () => {
           className="object-cover -z-10 brightness-75"
           alt="photo chaussures page d'accueil"
         />
-        <div className="flex flex-col gap-8 text-neutrals-100">
-          <h1 className="h3">Lorem ipsum dolor sit amet</h1>
-          <p className="p2-b">Lorem ipsum dolor sit amet consectetur. Amet tortor pellentesque adipiscing tortor.</p>
-          <button className="bp-sm flex items-center gap-2">
-            Découvrir
-            <Image src={ArrowForwardIcon} alt="icône fléche en avant" />
-          </button>
+        <div className="hero-content">
+          <div className="md:w-3/4 xl:w-1/2 p-4 flex flex-col gap-8 text-neutrals-100">
+            <h1 className="h3 md:h2 xl:h1">Lorem ipsum dolor sit amet</h1>
+            <p className="p2-b md:p1-b">
+              Lorem ipsum dolor sit amet consectetur. Amet tortor pellentesque adipiscing tortor.
+            </p>
+            <button className="bp-sm md:bp-lg flex items-center gap-2">
+              Découvrir
+              <Image src={ArrowForwardIcon} alt="icône flêche en avant" />
+            </button>
+          </div>
         </div>
       </section>
     </div>
