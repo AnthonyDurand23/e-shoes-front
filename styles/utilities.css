@@ -65,14 +65,14 @@
 
   /* BUTTONS */
   .bp-lg {
-    @apply w-fit h-[3.25rem] px-4 bg-neutrals-900 p1-b rounded-md shadow hover:opacity-95 hover:scale-105 transition-all duration-200;
+    @apply w-fit h-[3.25rem] px-4 bg-neutrals-900 p1-b rounded-md shadow hover:brightness-125 hover:scale-105 transition-all duration-200;
   }
 
   .bp-sm {
-    @apply w-fit h-11 px-4 bg-neutrals-900 p2-b rounded-md shadow hover:opacity-95 hover:scale-105 transition-all duration-200;
+    @apply w-fit h-11 px-4 bg-neutrals-900 p2-b rounded-md shadow hover:brightness-125 hover:scale-105 transition-all duration-200;
   }
 
   .max-width {
-    @apply max-w-[calc(1600px-7rem)];
+    @apply max-w-[calc(1280px-5rem)];
   }
 }

@@ -23,30 +23,61 @@ const Home = () => {
       </Head>
       <section className="hero">
         <Image src={HeroImg} fill placeholder="blur" className="object-cover -z-10 brightness-75" alt="" />
-        <div className="hero-content">
-          <div className="md:w-3/4 xl:w-1/2 p-4 flex flex-col gap-8 text-neutrals-100">
+        <div className="hero-container">
+          <div className="hero-content">
             <h1 className="h3 md:h2 xl:h1">Lorem ipsum dolor sit amet</h1>
             <p className="p2-b md:p1-b">
               Lorem ipsum dolor sit amet consectetur. Amet tortor pellentesque adipiscing tortor.
             </p>
-            <button className="bp-sm md:bp-lg flex items-center gap-2">
+            <button
+              type="button"
+              className="bp-sm md:bp-lg flex items-center gap-2"
+              onClick={() => window.scroll({ behavior: 'smooth', top: window.innerHeight - 60 })}
+            >
               Découvrir
               <Image src={ArrowForwardIcon} alt="icône flêche en avant" />
             </button>
           </div>
         </div>
       </section>
-      <section className="relative top-[100vh] p-6 md:p-8 xl:p-14 flex flex-col gap-4">
-        <Card link="/nouveautes" img={FeaturesImg} altImageText="photo nouveautés" title="Nouveautés" />
-        <Card
-          link="/meilleures-ventes"
-          img={BestSellersImg}
-          altImageText="photo meilleures ventes"
-          title="Meilleures ventes"
-        />
-        <Card link="femme" img={WomanShoesImg} altImageText="photo chaussures femmes" title="Femme" />
-        <Card link="homme" img={ManShoesImg} altImageText="photo chaussures hommes" title="Homme" />
-        <Card link="enfant" img={ChildShoesImg} altImageText="photo chaussures enfants" title="Enfant" />
+      <section className="home-body">
+        <div className="home-body-container">
+          <Card
+            link="/nouveautes"
+            img={FeaturesImg}
+            altImageText="photo nouveautés"
+            title="Nouveautés"
+            className="home-card home-card--top"
+          />
+          <Card
+            link="/top-ventes"
+            img={BestSellersImg}
+            altImageText="photo top ventes"
+            title="Top ventes"
+            className="home-card home-card--top"
+          />
+          <Card
+            link="femme"
+            img={WomanShoesImg}
+            altImageText="photo chaussures femmes"
+            title="Femme"
+            className="home-card home-card--bottom"
+          />
+          <Card
+            link="homme"
+            img={ManShoesImg}
+            altImageText="photo chaussures hommes"
+            title="Homme"
+            className="home-card home-card--bottom"
+          />
+          <Card
+            link="enfant"
+            img={ChildShoesImg}
+            altImageText="photo chaussures enfants"
+            title="Enfant"
+            className="home-card home-card--bottom"
+          />
+        </div>
       </section>
     </>
   );

@@ -9,10 +9,6 @@ module.exports = {
   content: ['./src/pages/**/*.{js,ts,jsx,tsx}', './src/components/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors,
-    // screens: {
-    //   '+480': { min: '480px' },
-    //   '-480': { max: '480px' },
-    // },
     extend: {
       keyframes,
       animation,
@@ -20,6 +16,10 @@ module.exports = {
         headings: "'Lora', sans-serif",
         body: "'Inter', sans-serif",
       },
+      // screens: {
+      //   '+1600': { min: '1600px' },
+      // '-480': { max: '480px' },
+      // },
     },
   },
   plugins: [
