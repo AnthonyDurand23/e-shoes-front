@@ -25,7 +25,7 @@ const Header = () => {
           <NavBar />
         </div>
         <div className="flex gap-5 text-neutrals-900">
-          <div className="flex items-center gap-1 cursor-pointer">
+          <div className="flex items-center gap-1 cursor-pointer hover:scale-105 transition-all duration-200">
             <Image src={CartIcon} alt="icône panier" className="xl:w-[30px]" />
             <Link href="/panier" className="h6 xl:h5">
               Panier

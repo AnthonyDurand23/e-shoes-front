@@ -23,11 +23,27 @@
   }
 
   .navbar > * {
-    @apply w-fit;
+    @apply w-fit hover:scale-105 transition-all duration-200;
   }
 
   .navbar-active {
     @apply underline underline-offset-8 decoration-4 decoration-neutrals-900;
+  }
+
+  .footer {
+    @apply w-full px-6 py-4 md:px-8 md:py-6 xl:px-0 xl:py-8 bg-primary-300;
+  }
+
+  .footer-content {
+    @apply w-full h-full xl:max-width xl:mx-auto flex flex-col justify-center items-center gap-1 md:gap-2 xl:gap-4 p3-b md:p2-b xl:p1-b text-neutrals-900;
+  }
+
+  .footer-content-links {
+    @apply flex flex-col md:flex-row md:gap-4 justify-center items-center;
+  }
+
+  .footer-content-links > * {
+    @apply hover:underline;
   }
 
   /*HOME PAGE*/
