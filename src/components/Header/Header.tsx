@@ -21,20 +21,22 @@ const Header = () => {
             <Image src={Logo} alt="logo du site" />
           </Link>
         </div>
-        <div className="max-md:hidden">
+        <div className="maxmd:hidden">
           <NavBar />
         </div>
-        <div className="flex gap-5 text-neutrals-900">
-          <div className="flex items-center gap-1 cursor-pointer hover:scale-105 transition-all duration-200">
-            <Image src={CartIcon} alt="icône panier" className="xl:w-[30px]" />
-            <Link href="/panier" className="h6 xl:h5">
-              Panier
-            </Link>
+        {!showMobileMenuModal && (
+          <div className="flex gap-5 text-neutrals-900">
+            <div className="flex items-center gap-1 cursor-pointer betterhover:scale-105 transition-all duration-200">
+              <Image src={CartIcon} alt="icône panier" className="xl:w-[30px]" />
+              <Link href="/panier" className="h6 xl:h5">
+                Panier
+              </Link>
+            </div>
+            <div className="cursor-pointer md:hidden">
+              <Image src={MenuIcon} alt="icône menu mobile" onClick={() => setShowMobileMenuModal(true)} />
+            </div>
           </div>
-          <div className="cursor-pointer md:hidden">
-            <Image src={MenuIcon} alt="icône menu mobile" onClick={() => setShowMobileMenuModal(true)} />
-          </div>
-        </div>
+        )}
         <MobileMenuModal
           showMobileMenuModal={showMobileMenuModal}
           setShowMobileMenuModal={setShowMobileMenuModal}

@@ -16,10 +16,12 @@ module.exports = {
         headings: "'Lora', sans-serif",
         body: "'Inter', sans-serif",
       },
-      // screens: {
-      //   '+1600': { min: '1600px' },
-      // '-480': { max: '480px' },
-      // },
+      screens: {
+        betterhover: { raw: '(hover: hover)' },
+        maxmd: { raw: '(max-width: 768px)' },
+        // '+1600': { min: '1600px' },
+        // '-480': { max: '480px' },
+      },
     },
   },
   plugins: [

@@ -15,7 +15,7 @@
   }
 
   .mobileMenuModal {
-    @apply fixed top-0 right-0 w-[66%] h-full py-4 px-4 z-20 bg-primary-500;
+    @apply fixed top-0 right-0 w-[66%] h-full py-4 px-4 z-20 bg-primary-500 opacity-90;
   }
 
   .navbar {
@@ -23,7 +23,7 @@
   }
 
   .navbar > * {
-    @apply w-fit hover:scale-105 transition-all duration-200;
+    @apply w-fit betterhover:scale-105 transition-all duration-200;
   }
 
   .navbar-active {
@@ -43,7 +43,7 @@
   }
 
   .footer-content-links > * {
-    @apply hover:underline;
+    @apply betterhover:underline;
   }
 
   /*HOME PAGE*/
@@ -68,7 +68,7 @@
   }
 
   .home-card {
-    @apply w-full md:max-w-[calc(50vw-2.75rem)] box-content relative flex justify-center items-center rounded-2xl overflow-hidden shadow hover:brightness-110 hover:scale-105 transition-all duration-200;
+    @apply w-full md:max-w-[calc(50vw-2.75rem)] box-content relative flex justify-center items-center rounded-2xl overflow-hidden shadow betterhover:brightness-110 betterhover:scale-105 transition-all duration-200;
   }
 
   .home-card--top {
