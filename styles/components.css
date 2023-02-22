@@ -7,7 +7,7 @@
 
   /* ALL PAGES*/
   .header {
-    @apply w-full h-[60px] xl:h-[80px] sticky top-0 z-10 px-6 md:px-8 xl:px-0 bg-primary-300;
+    @apply w-full h-[60px] xl:h-[80px] sticky top-0 z-20 px-6 md:px-8 xl:px-0 bg-primary-300;
   }
 
   .header-content {
@@ -15,7 +15,7 @@
   }
 
   .mobileMenuModal {
-    @apply fixed top-0 right-0 w-[66%] h-full py-4 px-4 z-20 bg-primary-500 opacity-90;
+    @apply fixed top-0 right-0 w-[66%] h-full py-4 px-4 z-40 bg-primary-500 opacity-90;
   }
 
   .navbar {
@@ -23,7 +23,7 @@
   }
 
   .navbar > * {
-    @apply w-fit betterhover:scale-105 transition-all duration-200;
+    @apply w-fit hover:scale-105 transition-all duration-200;
   }
 
   .navbar-active {
@@ -43,7 +43,7 @@
   }
 
   .footer-content-links > * {
-    @apply betterhover:underline;
+    @apply hover:underline;
   }
 
   /*HOME PAGE*/
@@ -68,7 +68,7 @@
   }
 
   .home-card {
-    @apply w-full md:max-w-[calc(50vw-2.75rem)] box-content relative flex justify-center items-center rounded-2xl overflow-hidden shadow betterhover:brightness-110 betterhover:scale-105 transition-all duration-200;
+    @apply w-full md:max-w-[calc(50vw-2.75rem)] box-content relative flex justify-center items-center rounded-2xl overflow-hidden shadow hover:brightness-110 hover:scale-105 transition-all duration-200;
   }
 
   .home-card--top {
@@ -81,5 +81,18 @@
 
   .home-card-title {
     @apply p-3 h4 md:h3 xl:h2 bg-neutrals-500 bg-opacity-50 text-neutrals-100 uppercase rounded-lg;
+  }
+
+  /*WOMAN PAGE*/
+  .woman-body {
+    @apply p-6 md:p-8 xl:px-0 xl:py-10;
+  }
+
+  .woman-body-container {
+    @apply w-full xl:max-width xl:mx-auto flex md:flex-row md:flex-wrap flex-col items-center gap-6 justify-center;
+  }
+
+  .cards-products {
+    @apply w-full md:max-w-[calc(50vw-2.75rem)] xl:max-w-[calc((1280px-9.5rem)/4)] p-4 flex flex-col gap-4 bg-primary-300 rounded-2xl shadow hover:brightness-110 hover:scale-105 transition-all duration-200;
   }
 }

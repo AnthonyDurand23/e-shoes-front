@@ -18,7 +18,7 @@ const Card: React.FC<CardProps> = ({ link, img, altImageText, title, className }
         placeholder="blur"
         className="object-cover -z-10"
         alt={altImageText}
-        sizes="(max-width: 768px) 100vw, max-width: 1280px) 50vw, 33vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
       />
       <p className="home-card-title">{title}</p>
     </Link>

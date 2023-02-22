@@ -17,8 +17,8 @@ module.exports = {
         body: "'Inter', sans-serif",
       },
       screens: {
-        betterhover: { raw: '(hover: hover)' },
-        maxmd: { raw: '(max-width: 768px)' },
+        // hover: { raw: '(hover: hover)' },
+        maxmd: { raw: '(max-width: 767px)' },
         // '+1600': { min: '1600px' },
         // '-480': { max: '480px' },
       },
@@ -31,4 +31,7 @@ module.exports = {
     },
   ],
   safelist,
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
 };

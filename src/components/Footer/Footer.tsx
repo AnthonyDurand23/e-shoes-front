@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <header className="footer">
+    <footer className="footer">
       <div className="footer-content">
         <p>2023 | E-SHOES</p>
         <div className="footer-content-links">
@@ -13,7 +13,7 @@ const Footer = () => {
           <Link href="/cgv">Conditions générales de vente</Link>
         </div>
       </div>
-    </header>
+    </footer>
   );
 };
 

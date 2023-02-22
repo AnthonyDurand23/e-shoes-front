@@ -1,25 +1,25 @@
 import { Fragment, RefObject } from 'react';
 import Image from 'next/image';
 import { Dialog, Transition } from '@headlessui/react';
+import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 
 import NavBar from '../NavBar/NavBar';
+
+import { closeMobileMenuModal } from '../../slices/interfaceSlice';
 
 import CloseIcon from '../../../public/assets/img/Close.svg';
 
 interface MobileMenuModalProps {
-  showMobileMenuModal: boolean;
-  setShowMobileMenuModal: (value: boolean) => void;
   initialFocusModal: RefObject<HTMLDivElement>;
 }
 
-const MobileMenuModal: React.FC<MobileMenuModalProps> = ({
-  showMobileMenuModal,
-  setShowMobileMenuModal,
-  initialFocusModal,
-}) => {
+const MobileMenuModal: React.FC<MobileMenuModalProps> = ({ initialFocusModal }) => {
+  const isMobileMenuModalOpen = useTypedSelector((state) => state.interface.isMobileMenuModalOpen);
+  const dispatch = useTypedDispatch();
+
   return (
-    <Transition show={showMobileMenuModal} as={Fragment}>
-      <Dialog initialFocus={initialFocusModal} onClose={() => setShowMobileMenuModal(false)}>
+    <Transition show={isMobileMenuModalOpen} as={Fragment}>
+      <Dialog initialFocus={initialFocusModal} onClose={() => dispatch(closeMobileMenuModal())}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -29,7 +29,7 @@ const MobileMenuModal: React.FC<MobileMenuModalProps> = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 z-10 bg-neutrals-900 bg-opacity-30" aria-hidden="true" />
+          <div className="fixed inset-0 z-30 bg-neutrals-900 bg-opacity-30" aria-hidden="true" />
         </Transition.Child>
         <Transition.Child
           as={Fragment}
@@ -45,7 +45,7 @@ const MobileMenuModal: React.FC<MobileMenuModalProps> = ({
             <Dialog.Description className="hidden">Affichage du menu de navigation</Dialog.Description>
             <div ref={initialFocusModal} className="flex items-start justify-between">
               <NavBar />
-              <Image src={CloseIcon} alt="icône fermer menu mobile" onClick={() => setShowMobileMenuModal(false)} />
+              <Image src={CloseIcon} alt="icône fermer menu mobile" onClick={() => dispatch(closeMobileMenuModal())} />
             </div>
           </Dialog.Panel>
         </Transition.Child>
