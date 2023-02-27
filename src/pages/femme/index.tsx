@@ -2,9 +2,13 @@ import Head from 'next/head';
 
 import CardsProducts from '@/components/CardsProducts/CardsProducts';
 
-import products from '../../../public/assets/seeding.json';
+import { Product } from '@/types/types';
 
-const Woman = () => {
+interface ProductsProps {
+  products: Product[];
+}
+
+const Woman: React.FC<ProductsProps> = ({ products }) => {
   return (
     <>
       <Head>
@@ -14,18 +18,20 @@ const Woman = () => {
         <title>E-SHOES | Femme</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="woman-body">
-        <div className="woman-body-container">
+      <section className="genre-body">
+        <div className="genre-body-container">
           <h1 className="w-full h4 md:h3 xl:h2 text-center">Chaussures Femme</h1>
           {products.map((product) => (
             <CardsProducts
               key={product.reference}
-              link={`/${product.reference}`}
-              img={`/../public/assets/img/seeding/${product.photos[0]}.jpg`}
+              link={`/femme/${product.id.toString()}`}
+              img={`https://res.cloudinary.com/doemagjfj/image/upload/v1677079486/e-shoes/${
+                product.photos.split('|')[0]
+              }.jpg`}
               altImageText={`photo chaussures ${product.nom}`}
               brand={product.marque}
               name={product.nom}
-              category={product.categorie}
+              category={product.categories}
               price={Number(product.prix)}
             />
           ))}
@@ -36,3 +42,14 @@ const Woman = () => {
 };
 
 export default Woman;
+
+export const getServerSideProps = async () => {
+  const data = await fetch('https://api-e-shoes.adwebdev.fr/produits/femme');
+  const products = await data.json();
+
+  return {
+    props: {
+      products,
+    },
+  };
+};

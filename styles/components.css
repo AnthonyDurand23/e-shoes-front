@@ -83,12 +83,12 @@
     @apply p-3 h4 md:h3 xl:h2 bg-neutrals-500 bg-opacity-50 text-neutrals-100 uppercase rounded-lg;
   }
 
-  /*WOMAN PAGE*/
-  .woman-body {
+  /*GENRE PAGE*/
+  .genre-body {
     @apply p-6 md:p-8 xl:px-0 xl:py-10;
   }
 
-  .woman-body-container {
+  .genre-body-container {
     @apply w-full xl:max-width xl:mx-auto flex md:flex-row md:flex-wrap flex-col items-center gap-6 justify-center;
   }
 

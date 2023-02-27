@@ -7,7 +7,7 @@ interface CardsProductsProps {
   altImageText: string;
   brand: string;
   name: string;
-  category: string;
+  category: string[];
   price: number;
 }
 
@@ -25,7 +25,7 @@ const CardsProducts: React.FC<CardsProductsProps> = ({ link, img, altImageText, 
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
         />
       </div>
-      <div className="h-[82px] flex flex-col justify-between gap-2">
+      <div className="min-h-[82px] flex flex-col justify-between gap-2">
         <div className="flex justify-between p2-b">
           <p>{brand}</p>
           <p>{price.toFixed(2).replace('.', ',')} €</p>

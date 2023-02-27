@@ -2,10 +2,11 @@
   "name": "e-shoes-front",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://e-shoes.adwebdev.fr",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
   "dependencies": {

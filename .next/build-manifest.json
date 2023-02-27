@@ -1,0 +1,70 @@
+{
+  "polyfillFiles": [
+    "static/chunks/polyfills-c67a75d1b6f99dc8.js"
+  ],
+  "devFiles": [],
+  "ampDevFiles": [],
+  "lowPriorityFiles": [
+    "static/6M8fU2xRoAnfQ3pv9tx48/_buildManifest.js",
+    "static/6M8fU2xRoAnfQ3pv9tx48/_ssgManifest.js"
+  ],
+  "rootMainFiles": [],
+  "pages": {
+    "/": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/index-9ca087d88519e846.js"
+    ],
+    "/_app": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/css/f10749eeb431ffc6.css",
+      "static/chunks/pages/_app-e8c1f88bc0ece5ef.js"
+    ],
+    "/_error": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/_error-8353112a01355ec2.js"
+    ],
+    "/enfant": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/enfant-caa802e719de4f2b.js"
+    ],
+    "/enfant/[produit]": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/enfant/[produit]-f7c37af8f0064009.js"
+    ],
+    "/femme": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/femme-9cdbe4035b7c000f.js"
+    ],
+    "/femme/[produit]": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/femme/[produit]-5c7378e097fa6af1.js"
+    ],
+    "/homme": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/homme-faa38791d86a6233.js"
+    ],
+    "/homme/[produit]": [
+      "static/chunks/webpack-6ef43a8d4a395f49.js",
+      "static/chunks/framework-2c79e2a64abdb08b.js",
+      "static/chunks/main-f11614d8aa7ee555.js",
+      "static/chunks/pages/homme/[produit]-56a6c90bd519586d.js"
+    ]
+  },
+  "ampFirstPages": []
+}
