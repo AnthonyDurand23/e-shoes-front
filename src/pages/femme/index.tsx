@@ -1,11 +1,13 @@
+import { v4 as uuidv4 } from 'uuid';
+
 import Head from 'next/head';
 
 import CardsProducts from '@/components/CardsProducts/CardsProducts';
 
-import { Product } from '@/types/types';
+import { ProductType } from '@/types/types';
 
 interface ProductsProps {
-  products: Product[];
+  products: ProductType[];
 }
 
 const Woman: React.FC<ProductsProps> = ({ products }) => {
@@ -23,7 +25,7 @@ const Woman: React.FC<ProductsProps> = ({ products }) => {
           <h1 className="w-full h4 md:h3 xl:h2 text-center">Chaussures Femme</h1>
           {products.map((product) => (
             <CardsProducts
-              key={product.reference}
+              key={uuidv4()}
               link={`/femme/${product.id.toString()}`}
               img={`https://res.cloudinary.com/doemagjfj/image/upload/v1677079486/e-shoes/${
                 product.photos.split('|')[0]

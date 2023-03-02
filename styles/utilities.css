@@ -72,6 +72,16 @@
     @apply w-fit h-11 px-4 bg-neutrals-900 p2-b text-neutrals-100 rounded-md shadow hover:brightness-125 hover:scale-105 transition-all duration-200;
   }
 
+  /* SELECT */
+  .listbox-button {
+    @apply relative w-full rounded-md bg-neutrals-white py-2 pl-3 pr-10 text-center shadow-md focus:outline-none focus-visible:border-primary-300 focus-visible:ring-1 focus-visible:ring-primary-300 focus-visible:ring-offset-1 focus-visible:ring-offset-primary-300 hover:outline hover:outline-1 hover:outline-primary-300;
+  }
+
+  .listbox-options {
+    @apply absolute mt-1 max-h-60 w-full bg-neutrals-white overflow-auto rounded-md py-1 shadow-lg ring-1 ring-primary-300 focus:outline-none;
+  }
+
+  /* OTHER */
   .max-width {
     @apply max-w-[calc(1280px-5rem)];
   }

@@ -19,7 +19,6 @@ const CardsProducts: React.FC<CardsProductsProps> = ({ link, img, altImageText, 
         <Image
           src={img}
           fill
-          //placeholder="blur"
           className="object-cover"
           alt={altImageText}
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"

@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductType {
   id: number;
   reference: string;
   nom: string;
@@ -21,4 +21,10 @@ export interface Product {
   proprietes: string;
   genre: string;
   categories: string[];
+}
+
+export interface SelectOptionType {
+  id: number;
+  value: string;
+  unavailable: boolean;
 }
