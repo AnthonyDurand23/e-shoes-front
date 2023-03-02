@@ -1,8 +1,9 @@
 import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-
+import { useTypedDispatch } from '@/hooks/reduxHooks';
+import { addToCart } from '@/slices/dataSlice';
 import { ProductType, SelectOptionType } from '@/types/types';
 import Select from '../Select/Select';
 import ProductDetails from './ProductDetails/ProductDetails';
@@ -13,8 +14,28 @@ interface ProductProps {
 }
 
 const Product: React.FC<ProductProps> = ({ product, sizes }) => {
+  const dispatch = useTypedDispatch();
   const [selectedImg, setselectedImg] = useState(0);
   const [selectedSize, setSelectedSize] = useState({ id: 0, value: 'Taille', unavailable: false });
+  const [sizeAlert, setSizeAlert] = useState(false);
+
+  useEffect(() => {
+    if (selectedSize.id !== 0) setSizeAlert(false);
+  }, [selectedSize]);
+
+  const handleSubmitForm = (event: React.SyntheticEvent) => {
+    event.preventDefault();
+    if (selectedSize.id === 0) {
+      setSizeAlert(true);
+    } else {
+      dispatch(
+        addToCart({
+          reference: product.reference,
+          size: selectedSize.value,
+        })
+      );
+    }
+  };
 
   return (
     <>
@@ -75,7 +96,7 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
                   <span>{product.categories[0]}</span>
                 )}
               </h3>
-              <form action="" method="post" className="flex flex-col gap-2 md:gap-4">
+              <form method="post" className="flex flex-col gap-2 md:gap-4" onSubmit={handleSubmitForm}>
                 <div className="flex justify-between items-center">
                   <p className="h5 md:h4 xl:h3">{product.prix.toFixed(2).replace('.', ',')} €</p>
                   <Select
@@ -86,9 +107,12 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
                     options={sizes}
                   />
                 </div>
-                <button type="submit" className="bp-sm xl:bp-lg">
-                  Ajouter au panier
-                </button>
+                <div className="flex gap-4 items-center">
+                  <button type="submit" className="bp-sm xl:bp-lg">
+                    Ajouter au panier
+                  </button>
+                  {sizeAlert && <p className="p2-b text-validation-red">Veuillez choisir une taille</p>}
+                </div>
               </form>
             </div>
             <div className="pt-8">

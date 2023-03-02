@@ -28,3 +28,8 @@ export interface SelectOptionType {
   value: string;
   unavailable: boolean;
 }
+
+export interface CartItem {
+  reference: string;
+  size: string;
+}

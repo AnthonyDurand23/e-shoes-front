@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
@@ -11,7 +12,19 @@ import WomanShoesImg from '../../public/assets/img/Woman_shoes.jpg';
 import ManShoesImg from '../../public/assets/img/Man_shoes.jpg';
 import ChildShoesImg from '../../public/assets/img/Child_shoes.jpg';
 
+import { useTypedDispatch } from '@/hooks/reduxHooks';
+import { useGetProductsQuery } from '@/services/productsApi';
+import { getProducts } from '@/slices/dataSlice';
+
 const Home = () => {
+  const dispatch = useTypedDispatch();
+  const productsRequestResults = useGetProductsQuery(null);
+
+  useEffect(() => {
+    const { data: products } = productsRequestResults;
+    if (products) dispatch(getProducts(products));
+  }, [productsRequestResults]);
+
   return (
     <>
       <Head>

@@ -1,14 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
-import { testApi } from '../services/testApi';
+import { productsApi } from '../services/productsApi';
 import interfaceReducer from '../slices/interfaceSlice';
+import dataReducer from '../slices/dataSlice';
 
 export const store = configureStore({
   reducer: {
-    [testApi.reducerPath]: testApi.reducer,
+    [productsApi.reducerPath]: productsApi.reducer,
     interface: interfaceReducer,
+    data: dataReducer,
   },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }).concat(testApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }).concat(productsApi.middleware),
   devTools: !(process.env.NODE_ENV === 'production'),
 });
 
