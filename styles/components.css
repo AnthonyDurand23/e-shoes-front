@@ -5,7 +5,7 @@
   }
   */
 
-  /* ALL PAGES*/
+  /* ALL PAGES */
   .header {
     @apply w-full h-[60px] xl:h-[80px] sticky top-0 z-20 px-6 md:px-8 xl:px-0 bg-primary-300;
   }
@@ -46,7 +46,7 @@
     @apply hover:underline;
   }
 
-  /*HOME PAGE*/
+  /* HOME PAGE */
   .hero {
     @apply w-full relative h-[calc(100vh-60px)] xl:h-[calc(100vh-80px)] px-6 md:px-8 xl:px-0 py-12 md:py-16 xl:py-20;
   }
@@ -83,7 +83,7 @@
     @apply p-3 h4 md:h3 xl:h2 bg-neutrals-500 bg-opacity-50 text-neutrals-100 uppercase rounded-lg;
   }
 
-  /*GENRE PAGE*/
+  /* GENRE PAGE */
   .genre-body {
     @apply p-6 md:p-8 xl:px-0 xl:py-10;
   }
@@ -96,7 +96,7 @@
     @apply w-full md:max-w-[calc(50vw-2.75rem)] xl:max-w-[calc((1280px-9.5rem)/4)] p-4 flex flex-col gap-4 bg-primary-300 rounded-2xl shadow hover:brightness-110 hover:scale-105 transition-all duration-200;
   }
 
-  /*PRODUCT PAGE*/
+  /* PRODUCT PAGE */
   .product-body {
     @apply min-h-[calc(100vh-60px)] md:min-h-[calc(100vh-60px-104px)] xl:min-h-[calc(100vh-80px-134px)] p-6 md:p-8 xl:px-0 xl:py-10;
   }
@@ -111,5 +111,10 @@
 
   .product-details-b {
     @apply inline pr-2 p3-b md:p2-b;
+  }
+
+  /* PANIER */
+  .cartModal {
+    @apply fixed top-[60px] xl:top-[80px] right-0 w-[75%] h-full py-4 px-4 z-40 bg-neutrals-100;
   }
 }

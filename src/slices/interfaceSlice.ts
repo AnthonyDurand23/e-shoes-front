@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface InterfaceState {
   isMobileMenuModalOpen: boolean;
+  isCartModalOpen: boolean;
 }
 
 const initialState: InterfaceState = {
   isMobileMenuModalOpen: false,
+  isCartModalOpen: false,
 };
 
 export const interfaceSlice = createSlice({
@@ -18,9 +20,15 @@ export const interfaceSlice = createSlice({
     closeMobileMenuModal: (state) => {
       state.isMobileMenuModalOpen = false;
     },
+    openCartModal: (state) => {
+      state.isCartModalOpen = true;
+    },
+    closeCartModal: (state) => {
+      state.isCartModalOpen = false;
+    },
   },
 });
 
-export const { openMobileMenuModal, closeMobileMenuModal } = interfaceSlice.actions;
+export const { openMobileMenuModal, closeMobileMenuModal, openCartModal, closeCartModal } = interfaceSlice.actions;
 
 export default interfaceSlice.reducer;

@@ -5,6 +5,8 @@ export const getSizesByGenre = (genre: string) => {
     enfant: [15, 37],
   };
 
+  if (genre === 'mixte') genre = 'homme';
+
   return Array.from(
     {
       length:

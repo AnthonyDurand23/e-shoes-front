@@ -6,32 +6,18 @@ import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 import NavBar from '../NavBar/NavBar';
 import MobileMenuModal from '../MobileMenuModal/MobileMenuModal';
 
-import { openMobileMenuModal } from '@/slices/interfaceSlice';
+import { openCartModal, openMobileMenuModal } from '@/slices/interfaceSlice';
 
 import Logo from '../../../public/assets/img/Logo_e-shoes.png';
 import CartIcon from '../../../public/assets/img/Shopping_cart.svg';
 import MenuIcon from '../../../public/assets/img/Menu.svg';
+import CartModal from '../CartModal/CartModal';
 
 const Header = () => {
   const initialFocusModal = useRef(null);
   const isMobileMenuModalOpen = useTypedSelector((state) => state.interface.isMobileMenuModalOpen);
   const cart = useTypedSelector((state) => state.data.cart);
-  const products = useTypedSelector((state) => state.data.products);
   const dispatch = useTypedDispatch();
-
-  const displayCart = () => {
-    console.log(
-      cart.map((item) => {
-        const product = products.find(({ reference }) => reference === item.reference);
-        return {
-          marque: product?.marque,
-          nom: product?.nom,
-          prix: product?.prix,
-          taille: item.size,
-        };
-      })
-    );
-  };
 
   return (
     <header className="header">
@@ -47,10 +33,11 @@ const Header = () => {
         {!isMobileMenuModalOpen && (
           <div className="flex gap-5 text-neutrals-900">
             <Link
-              /*href="/panier"*/
-              href=""
+              href="/panier"
               className="relative h6 xl:h5 flex items-center gap-1 cursor-pointer hover:scale-105 transition-all duration-200"
-              onClick={displayCart}
+              onMouseEnter={() => {
+                if (cart.length !== 0) dispatch(openCartModal());
+              }}
             >
               <Image src={CartIcon} alt="icône panier" className="xl:w-[30px]" />
               {cart.length !== 0 && (
@@ -66,6 +53,7 @@ const Header = () => {
           </div>
         )}
         <MobileMenuModal initialFocusModal={initialFocusModal} />
+        <CartModal />
       </div>
     </header>
   );

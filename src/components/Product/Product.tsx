@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { useTypedDispatch } from '@/hooks/reduxHooks';
 import { addToCart } from '@/slices/dataSlice';
+import { openCartModal } from '@/slices/interfaceSlice';
 import { ProductType, SelectOptionType } from '@/types/types';
 import Select from '../Select/Select';
 import ProductDetails from './ProductDetails/ProductDetails';
@@ -33,9 +34,11 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
       dispatch(
         addToCart({
           reference: product.reference,
-          size: selectedSize.value,
+          size: Number(selectedSize.value),
+          quantity: 1,
         })
       );
+      dispatch(openCartModal());
     }
   };
 

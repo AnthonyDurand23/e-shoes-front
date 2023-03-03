@@ -31,5 +31,6 @@ export interface SelectOptionType {
 
 export interface CartItem {
   reference: string;
-  size: string;
+  size: number;
+  quantity: number;
 }
