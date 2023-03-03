@@ -18,6 +18,8 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
   const [selectedImg, setselectedImg] = useState(0);
   const [selectedSize, setSelectedSize] = useState({ id: 0, value: 'Taille', unavailable: false });
   const [sizeAlert, setSizeAlert] = useState(false);
+  const [imgZoom, setImgZoom] = useState(false);
+  const [zoomClassName, setZoomClassName] = useState({});
 
   useEffect(() => {
     if (selectedSize.id !== 0) setSizeAlert(false);
@@ -36,6 +38,32 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
       );
     }
   };
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const productImgContainer = event.view?.document.getElementById('product-img');
+      if (productImgContainer) {
+        setZoomClassName({
+          transform: `translate(${
+            productImgContainer.getClientRects()[0].width / 2 -
+            (event.clientX - productImgContainer.getClientRects()[0].left)
+          }px, ${
+            productImgContainer.getClientRects()[0].height / 2 -
+            (event.clientY - productImgContainer.getClientRects()[0].top)
+          }px) scale(2)`,
+          cursor: 'zoom-in',
+        });
+      }
+    };
+    if (imgZoom && window.innerWidth >= 1280) {
+      window.addEventListener('mousemove', handleMouseMove);
+    } else {
+      setZoomClassName({});
+    }
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [imgZoom]);
 
   return (
     <>
@@ -68,15 +96,21 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
                 </li>
               ))}
             </ul>
-            <div className="relative w-full min-h-[398px] md:min-h-[573px] xl:min-h-[748px] shadow-md">
+            <div
+              id="product-img"
+              className="relative w-full min-h-[398px] md:min-h-[573px] xl:min-h-[748px] shadow-md overflow-hidden"
+            >
               <Image
                 src={`https://res.cloudinary.com/doemagjfj/image/upload/v1677079486/e-shoes/${
                   product.photos.split('|')[selectedImg]
                 }.jpg`}
                 fill
                 priority
+                style={zoomClassName}
                 alt={`photo chaussures ${product.nom}`}
                 sizes="(max-width: 768px) 100vw, 50vw"
+                onMouseEnter={() => setImgZoom(true)}
+                onMouseLeave={() => setImgZoom(false)}
               />
             </div>
           </div>
