@@ -1,25 +1,25 @@
 export interface ProductType {
   id: number;
   reference: string;
-  nom: string;
-  marque: string;
-  prix: number;
+  name: string;
+  brand: string;
+  price: number;
   photos: string;
-  dessus: string;
-  doublure: string;
-  semelle_proprete: string;
-  semelle_usure: string;
-  epaisseur_doublure: string;
-  matiere: string;
-  temps: string;
+  top: string;
+  lining: string;
+  sockliner: string;
+  outsole: string;
+  lining_thickness: string;
+  material: string;
+  weather: string;
   sport: string;
-  bout: string;
-  forme_talon: string;
-  fermeture: string;
-  motif: string;
-  info_sup: string;
-  proprietes: string;
-  genre: string;
+  end: string;
+  heel_shape: string;
+  closure: string;
+  pattern: string;
+  additional_infos: string;
+  properties: string;
+  gender: string;
   categories: string[];
 }
 
@@ -29,8 +29,14 @@ export interface SelectOptionType {
   unavailable: boolean;
 }
 
-export interface CartItem {
+export interface CartProduct {
+  id: number;
   reference: string;
+  brand: string;
+  name: string;
+  price: number;
+  photo: string;
+  gender: string;
   size: number;
   quantity: number;
 }

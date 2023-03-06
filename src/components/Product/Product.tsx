@@ -33,7 +33,13 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
     } else {
       dispatch(
         addToCart({
+          id: product.id,
           reference: product.reference,
+          brand: product.brand,
+          name: product.name,
+          price: product.price,
+          photo: product.photos.split('|')[0],
+          gender: product.gender,
           size: Number(selectedSize.value),
           quantity: 1,
         })
@@ -73,8 +79,8 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
       <Head>
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={`La page de l'article: ${product.nom}`} />
-        <title>{`E-SHOES | Article: ${product.nom}`}</title>
+        <meta name="description" content={`La page de l'article: ${product.name}`} />
+        <title>{`E-SHOES | Article: ${product.name}`}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="product-body">
@@ -91,9 +97,9 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
                 >
                   <Image
                     key={uuidv4()}
-                    src={`https://res.cloudinary.com/doemagjfj/image/upload/v1677079486/e-shoes/${photo}.jpg`}
+                    src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}${photo}.jpg`}
                     fill
-                    alt={`photo chaussures ${product.nom}`}
+                    alt={`photo chaussures ${product.name}`}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </li>
@@ -104,13 +110,11 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
               className="relative w-full min-h-[398px] md:min-h-[573px] xl:min-h-[748px] shadow-md overflow-hidden"
             >
               <Image
-                src={`https://res.cloudinary.com/doemagjfj/image/upload/v1677079486/e-shoes/${
-                  product.photos.split('|')[selectedImg]
-                }.jpg`}
+                src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}${product.photos.split('|')[selectedImg]}.jpg`}
                 fill
                 priority
                 style={zoomClassName}
-                alt={`photo chaussures ${product.nom}`}
+                alt={`photo chaussures ${product.name}`}
                 sizes="(max-width: 768px) 100vw, 50vw"
                 onMouseEnter={() => setImgZoom(true)}
                 onMouseLeave={() => setImgZoom(false)}
@@ -119,14 +123,14 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
           </div>
           <div className="w-full md:w-[40%]">
             <div className="pt-8 md:pt-0 flex flex-col gap-4">
-              <h2 className="h5 md:h4 xl:h3">{product.marque}</h2>
-              <h2 className="h5 md:h4 xl:h3 uppercase">{product.nom}</h2>
+              <h2 className="h5 md:h4 xl:h3">{product.brand}</h2>
+              <h2 className="h5 md:h4 xl:h3 uppercase">{product.name}</h2>
               <h3 className="h6 md:h5 xl:h4">
                 {product.categories.length > 1 ? (
-                  product.categories.map((categorie, index) => (
+                  product.categories.map((category, index) => (
                     <span key={uuidv4()}>
                       {index !== 0 ? ' - ' : ''}
-                      {categorie}
+                      {category}
                     </span>
                   ))
                 ) : (
@@ -135,10 +139,10 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
               </h3>
               <form method="post" className="flex flex-col gap-2 md:gap-4" onSubmit={handleSubmitForm}>
                 <div className="flex justify-between items-center">
-                  <p className="h5 md:h4 xl:h3">{product.prix.toFixed(2).replace('.', ',')} €</p>
+                  <p className="h5 md:h4 xl:h3">{product.price.toFixed(2).replace('.', ',')} €</p>
                   <Select
-                    name="taille"
-                    classname="relative w-24 xl:w-32 mt-1 p3-r md:p2-r xl:p1-r bg-neutrals-white"
+                    name="size"
+                    classname="relative w-24 xl:w-32 mt-1 p3-r md:p2-r xl:p1-r"
                     selectedOption={selectedSize}
                     setSelectedOption={setSelectedSize}
                     options={sizes}

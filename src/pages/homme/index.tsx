@@ -20,21 +20,19 @@ const Man: React.FC<ProductsProps> = ({ products }) => {
         <title>E-SHOES | Homme</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <section className="genre-body">
-        <div className="genre-body-container">
+      <section className="gender-body">
+        <div className="gender-body-container">
           <h1 className="w-full h4 md:h3 xl:h2 text-center">Chaussures Homme</h1>
           {products.map((product) => (
             <CardsProducts
               key={uuidv4()}
               link={`/homme/${product.id.toString()}`}
-              img={`https://res.cloudinary.com/doemagjfj/image/upload/v1677079486/e-shoes/${
-                product.photos.split('|')[0]
-              }.jpg`}
-              altImageText={`photo chaussures ${product.nom}`}
-              brand={product.marque}
-              name={product.nom}
+              img={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}${product.photos.split('|')[0]}.jpg`}
+              altImageText={`photo chaussures ${product.name}`}
+              brand={product.brand}
+              name={product.name}
               category={product.categories}
-              price={Number(product.prix)}
+              price={Number(product.price)}
             />
           ))}
         </div>
@@ -46,7 +44,7 @@ const Man: React.FC<ProductsProps> = ({ products }) => {
 export default Man;
 
 export const getServerSideProps = async () => {
-  const data = await fetch('https://api-e-shoes.adwebdev.fr/produits/homme');
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}produits/homme`);
   const products = await data.json();
 
   return {

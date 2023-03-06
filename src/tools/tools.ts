@@ -1,18 +1,20 @@
-export const getSizesByGenre = (genre: string) => {
-  const genreSizes = {
+export const getSizesByGender = (gender: string) => {
+  const genderSizes = {
     femme: [35, 49.5],
     homme: [35, 49.5],
     enfant: [15, 37],
   };
 
-  if (genre === 'mixte') genre = 'homme';
+  if (gender === 'mixte') gender = 'homme';
 
   return Array.from(
     {
       length:
-        (genreSizes[genre as keyof typeof genreSizes][1] - genreSizes[genre as keyof typeof genreSizes][0]) / 0.5 + 1,
+        (genderSizes[gender as keyof typeof genderSizes][1] - genderSizes[gender as keyof typeof genderSizes][0]) /
+          0.5 +
+        1,
     },
-    (_, index) => genreSizes[genre as keyof typeof genreSizes][0] + index * 0.5
+    (_, index) => genderSizes[gender as keyof typeof genderSizes][0] + index * 0.5
   ).map((item, index) => {
     return {
       id: index + 1,

@@ -83,12 +83,12 @@
     @apply p-3 h4 md:h3 xl:h2 bg-neutrals-500 bg-opacity-50 text-neutrals-100 uppercase rounded-lg;
   }
 
-  /* GENRE PAGE */
-  .genre-body {
+  /* GENDER PAGE */
+  .gender-body {
     @apply p-6 md:p-8 xl:px-0 xl:py-10;
   }
 
-  .genre-body-container {
+  .gender-body-container {
     @apply w-full xl:max-width xl:mx-auto flex md:flex-row md:flex-wrap flex-col items-center gap-6 justify-center;
   }
 
@@ -113,7 +113,7 @@
     @apply inline pr-2 p3-b md:p2-b;
   }
 
-  /* PANIER */
+  /* CART */
   .cartModal {
     @apply fixed top-[60px] xl:top-[80px] right-0 w-[75%] h-full py-4 px-4 z-40 bg-neutrals-100;
   }

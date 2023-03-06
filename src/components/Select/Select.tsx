@@ -7,15 +7,17 @@ import { SelectOptionType } from '@/types/types';
 interface SelectProps {
   name: string;
   classname: string;
+  label?: string;
   selectedOption: SelectOptionType;
   setSelectedOption: React.Dispatch<React.SetStateAction<SelectOptionType>>;
   options: SelectOptionType[];
 }
 
-const Select: React.FC<SelectProps> = ({ name, classname, selectedOption, setSelectedOption, options }) => {
+const Select: React.FC<SelectProps> = ({ name, classname, label, selectedOption, setSelectedOption, options }) => {
   return (
-    <Listbox name={name} value={selectedOption} onChange={setSelectedOption}>
-      <div className={classname}>
+    <Listbox name={name} value={selectedOption} by="id" onChange={setSelectedOption}>
+      <div className={`bg-neutrals-white flex items-center gap-4 ${classname}`}>
+        {label && <Listbox.Label>{label}</Listbox.Label>}
         <Listbox.Button className="listbox-button">
           <span className={`block truncate ${selectedOption.id ? 'text-neutrals-900' : 'text-neutrals-500'}`}>
             {selectedOption.value}

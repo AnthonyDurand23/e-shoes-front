@@ -9,46 +9,46 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     <>
       <p className="p2-b md:p1-b underline">Détails du produit :</p>
       <div className="pt-4 flex flex-col xl:gap-2">
-        {product.dessus && (
+        {product.top && (
           <div>
             <p className="product-details-b">Dessus / Tige :</p>
-            <p className="product-details-r">{product.dessus}</p>
+            <p className="product-details-r">{product.top}</p>
           </div>
         )}
-        {product.doublure && (
+        {product.lining && (
           <div>
             <p className="product-details-b">Doublure :</p>
-            <p className="product-details-r">{product.doublure}</p>
+            <p className="product-details-r">{product.lining}</p>
           </div>
         )}
-        {product.semelle_proprete && (
+        {product.sockliner && (
           <div>
             <p className="product-details-b">Semelle de propreté :</p>
-            <p className="product-details-r">{product.semelle_proprete}</p>
+            <p className="product-details-r">{product.sockliner}</p>
           </div>
         )}
-        {product.semelle_usure && (
+        {product.outsole && (
           <div>
             <p className="product-details-b">Semelle d&apos;usure :</p>
-            <p className="product-details-r">{product.semelle_usure}</p>
+            <p className="product-details-r">{product.outsole}</p>
           </div>
         )}
-        {product.epaisseur_doublure && (
+        {product.lining_thickness && (
           <div>
             <p className="product-details-b">Épaisseur de la doublure :</p>
-            <p className="product-details-r">{product.epaisseur_doublure}</p>
+            <p className="product-details-r">{product.lining_thickness}</p>
           </div>
         )}
-        {product.matiere && (
+        {product.material && (
           <div>
             <p className="product-details-b">Matière :</p>
-            <p className="product-details-r">{product.matiere}</p>
+            <p className="product-details-r">{product.material}</p>
           </div>
         )}
-        {product.temps && (
+        {product.weather && (
           <div>
             <p className="product-details-b">Temps :</p>
-            <p className="product-details-r">{product.temps}</p>
+            <p className="product-details-r">{product.weather}</p>
           </div>
         )}
         {product.sport && (
@@ -57,40 +57,40 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
             <p className="product-details-r">{product.sport}</p>
           </div>
         )}
-        {product.bout && (
+        {product.end && (
           <div>
             <p className="product-details-b">Bout de la chaussure :</p>
-            <p className="product-details-r">{product.bout}</p>
+            <p className="product-details-r">{product.end}</p>
           </div>
         )}
-        {product.forme_talon && (
+        {product.heel_shape && (
           <div>
             <p className="product-details-b">Forme du talon :</p>
-            <p className="product-details-r">{product.forme_talon}</p>
+            <p className="product-details-r">{product.heel_shape}</p>
           </div>
         )}
-        {product.fermeture && (
+        {product.closure && (
           <div>
             <p className="product-details-b">Fermeture :</p>
-            <p className="product-details-r">{product.fermeture}</p>
+            <p className="product-details-r">{product.closure}</p>
           </div>
         )}
-        {product.motif && (
+        {product.pattern && (
           <div>
             <p className="product-details-b">Motif / Couleur :</p>
-            <p className="product-details-r">{product.motif}</p>
+            <p className="product-details-r">{product.pattern}</p>
           </div>
         )}
-        {product.info_sup && (
+        {product.additional_infos && (
           <div>
             <p className="product-details-b">Informations supplémentaires :</p>
-            <p className="product-details-r">{product.info_sup}</p>
+            <p className="product-details-r">{product.additional_infos}</p>
           </div>
         )}
-        {product.proprietes && (
+        {product.properties && (
           <div>
             <p className="product-details-b">Propriétés :</p>
-            <p className="product-details-r">{product.proprietes}</p>
+            <p className="product-details-r">{product.properties}</p>
           </div>
         )}
       </div>

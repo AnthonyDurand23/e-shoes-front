@@ -3,7 +3,7 @@ import { ProductType } from '@/types/types';
 
 export const productsApi = createApi({
   reducerPath: 'productsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: process.env.NEXT_PUBLIC_API_URL }),
   endpoints: (builder) => ({
     getProducts: builder.query<ProductType[], null>({
       query: () => 'produits',
