@@ -5,6 +5,10 @@
   }
   */
 
+  .scrollbar-hidden {
+    @apply scrollbar:hidden;
+  }
+
   /* HEADINGS */
   .h1 {
     @apply font-headings text-5xl font-semibold leading-tight;
@@ -74,11 +78,11 @@
 
   /* SELECT */
   .listbox-button {
-    @apply relative w-full rounded-md bg-neutrals-white py-2 pl-3 pr-10 text-center shadow-md focus:outline-none focus-visible:border-primary-300 focus-visible:ring-1 focus-visible:ring-primary-300 focus-visible:ring-offset-1 focus-visible:ring-offset-primary-300 hover:outline hover:outline-1 hover:outline-primary-300;
+    @apply relative w-full rounded-md bg-neutrals-white py-1 md:py-2 pl-2 md:pl-3 pr-6 md:pr-10 text-center shadow-md focus:outline-none focus-visible:border-primary-300 focus-visible:ring-1 focus-visible:ring-primary-300 focus-visible:ring-offset-1 focus-visible:ring-offset-primary-300 hover:outline hover:outline-1 hover:outline-primary-300;
   }
 
   .listbox-options {
-    @apply absolute mt-1 max-h-60 w-full bg-neutrals-white overflow-auto rounded-md py-1 shadow-lg ring-1 ring-primary-300 focus:outline-none;
+    @apply absolute mt-1 max-h-60 w-full z-10 bg-neutrals-white overflow-auto rounded-md py-1 shadow-lg ring-1 ring-primary-300 focus:outline-none;
   }
 
   /* OTHER */

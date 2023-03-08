@@ -28,6 +28,7 @@ module.exports = {
     function ({ addVariant }) {
       addVariant('first-child', '& > *:first-child');
       addVariant('last-child', '& > *:last-child');
+      addVariant('scrollbar', '&::-webkit-scrollbar');
     },
   ],
   safelist,

@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 
@@ -9,6 +9,7 @@ import CartProduct from '../CartProduct/CartProduct';
 const CartModal = () => {
   const isCartModalOpen = useTypedSelector((state) => state.interface.isCartModalOpen);
   const cart = useTypedSelector((state) => state.data.cart);
+  const [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useTypedDispatch();
 
   // useEffect(() => {
@@ -17,6 +18,14 @@ const CartModal = () => {
   //   }, 5000);
   //   return () => clearTimeout(modalTimer);
   // });
+
+  useEffect(() => {
+    let total = 0;
+    cart.forEach(({ price, quantity }) => {
+      total = total + price * quantity;
+    });
+    setTotalPrice(total);
+  }, [cart]);
 
   console.log(cart);
 
@@ -46,11 +55,26 @@ const CartModal = () => {
           <Dialog.Panel className="cartModal">
             <Dialog.Title className="hidden">Mon panier</Dialog.Title>
             <Dialog.Description className="hidden">Affichage du panier</Dialog.Description>
-            <h3 className="flex justify-center h6 uppercase">Mon Panier</h3>
-            <div>
-              {cart.map((product, index) => (
-                <CartProduct key={uuidv4()} product={product} productIndex={index} />
-              ))}
+            <h3 className="mb-4 flex justify-center h6 uppercase">Mon Panier</h3>
+            {!!cart.length ? (
+              <div className="max-h-[50vh] flex flex-col gap-6 overflow-y-auto scrollbar-hidden">
+                {cart.map((product, index) => (
+                  <CartProduct key={uuidv4()} product={product} productIndex={index} />
+                ))}
+              </div>
+            ) : (
+              <p className="text-center">Votre panier est vide</p>
+            )}
+            <div className="w-full mt-3 pt-4 flex flex-col gap-2 border-t-2 border-neutrals-500">
+              <div className="flex justify-between p3-r">
+                <p>Livraison</p>
+                <p>0,00 €</p>
+              </div>
+              <div className="flex justify-between p2-b">
+                <p>Total</p>
+                <p>{totalPrice.toFixed(2).replace('.', ',')} €</p>
+              </div>
+              <button className="bp-sm min-w-full mt-2 uppercase">Mon panier</button>
             </div>
           </Dialog.Panel>
         </Transition.Child>

@@ -2,8 +2,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import { useTypedDispatch } from '@/hooks/reduxHooks';
-import { addToCart } from '@/slices/dataSlice';
+import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
+import { addEvenProductAndSizeToCart, addToCart } from '@/slices/dataSlice';
 import { openCartModal } from '@/slices/interfaceSlice';
 import { ProductType, SelectOptionType } from '@/types/types';
 import Select from '../Select/Select';
@@ -16,6 +16,7 @@ interface ProductProps {
 
 const Product: React.FC<ProductProps> = ({ product, sizes }) => {
   const dispatch = useTypedDispatch();
+  const cart = useTypedSelector((state) => state.data.cart);
   const [selectedImg, setselectedImg] = useState(0);
   const [selectedSize, setSelectedSize] = useState({ id: 0, value: 'Taille', unavailable: false });
   const [sizeAlert, setSizeAlert] = useState(false);
@@ -31,19 +32,31 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
     if (selectedSize.id === 0) {
       setSizeAlert(true);
     } else {
-      dispatch(
-        addToCart({
-          id: product.id,
-          reference: product.reference,
-          brand: product.brand,
-          name: product.name,
-          price: product.price,
-          photo: product.photos.split('|')[0],
-          gender: product.gender,
-          size: Number(selectedSize.value),
-          quantity: 1,
-        })
+      const evenProductAndSize = cart.find(
+        ({ reference, size }) => reference === product.reference && size === Number(selectedSize.value)
       );
+      if (evenProductAndSize) {
+        dispatch(
+          addEvenProductAndSizeToCart({
+            reference: product.reference,
+            size: Number(selectedSize.value),
+          })
+        );
+      } else {
+        dispatch(
+          addToCart({
+            id: product.id,
+            reference: product.reference,
+            brand: product.brand,
+            name: product.name,
+            price: product.price,
+            photo: product.photos.split('|')[0],
+            gender: product.gender,
+            size: Number(selectedSize.value),
+            quantity: 1,
+          })
+        );
+      }
       dispatch(openCartModal());
     }
   };
