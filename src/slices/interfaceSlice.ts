@@ -1,13 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface InterfaceState {
   isMobileMenuModalOpen: boolean;
   isCartModalOpen: boolean;
+  onHoverCartLink: boolean;
 }
 
 const initialState: InterfaceState = {
   isMobileMenuModalOpen: false,
   isCartModalOpen: false,
+  onHoverCartLink: false,
 };
 
 export const interfaceSlice = createSlice({
@@ -26,9 +28,13 @@ export const interfaceSlice = createSlice({
     closeCartModal: (state) => {
       state.isCartModalOpen = false;
     },
+    setOnHoverCartLink: (state, action: PayloadAction<boolean>) => {
+      state.onHoverCartLink = action.payload;
+    },
   },
 });
 
-export const { openMobileMenuModal, closeMobileMenuModal, openCartModal, closeCartModal } = interfaceSlice.actions;
+export const { openMobileMenuModal, closeMobileMenuModal, openCartModal, closeCartModal, setOnHoverCartLink } =
+  interfaceSlice.actions;
 
 export default interfaceSlice.reducer;

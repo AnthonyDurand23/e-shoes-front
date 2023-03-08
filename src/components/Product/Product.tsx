@@ -120,7 +120,7 @@ const Product: React.FC<ProductProps> = ({ product, sizes }) => {
             </ul>
             <div
               id="product-img"
-              className="relative w-full min-h-[398px] md:min-h-[573px] xl:min-h-[748px] shadow-md overflow-hidden"
+              className="relative w-full h-[398px] md:h-[573px] xl:h-[748px] shadow-md overflow-hidden"
             >
               <Image
                 src={`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}${product.photos.split('|')[selectedImg]}.jpg`}

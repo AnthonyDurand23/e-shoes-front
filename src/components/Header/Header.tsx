@@ -6,7 +6,7 @@ import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 import NavBar from '../NavBar/NavBar';
 import MobileMenuModal from '../MobileMenuModal/MobileMenuModal';
 
-import { openCartModal, openMobileMenuModal } from '@/slices/interfaceSlice';
+import { openCartModal, openMobileMenuModal, setOnHoverCartLink } from '@/slices/interfaceSlice';
 
 import Logo from '../../../public/assets/img/Logo_e-shoes.png';
 import CartIcon from '../../../public/assets/img/Shopping_cart.svg';
@@ -31,13 +31,17 @@ const Header = () => {
           <NavBar />
         </div>
         {!isMobileMenuModalOpen && (
-          <div className="flex gap-5 text-neutrals-900">
+          <div className="flex gap-5 text-neutrals-900 cursor-pointer">
             <Link
               href="/panier"
               className="relative h6 xl:h5 flex items-center gap-1 cursor-pointer hover:scale-105 transition-all duration-200"
               onMouseEnter={() => {
-                if (cart.length !== 0) dispatch(openCartModal());
+                if (cart.length !== 0) {
+                  dispatch(openCartModal());
+                  dispatch(setOnHoverCartLink(true));
+                }
               }}
+              onMouseLeave={() => dispatch(setOnHoverCartLink(false))}
             >
               <Image src={CartIcon} alt="icône panier" className="xl:w-[30px]" />
               {cart.length !== 0 && (
