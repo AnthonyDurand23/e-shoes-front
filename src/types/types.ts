@@ -40,3 +40,16 @@ export interface CartProduct {
   size: number;
   quantity: number;
 }
+
+export type InputsNameType = 'firstname' | 'lastname' | 'address' | 'city' | 'zipcode' | 'phone' | 'email';
+
+export interface inputType {
+  id: number;
+  name: InputsNameType;
+  type: string;
+  placeholder: string;
+  errorMessage: string;
+  label: string;
+  pattern?: string;
+  required: boolean;
+}

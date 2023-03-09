@@ -76,13 +76,26 @@
     @apply w-fit h-11 px-4 bg-neutrals-900 p2-b text-neutrals-100 rounded-md shadow cursor-pointer hover:brightness-125 hover:scale-105 transition-all duration-200;
   }
 
-  /* SELECT */
+  /* SELECTS */
   .listbox-button {
     @apply relative w-full rounded-md bg-neutrals-white py-1 md:py-2 pl-2 md:pl-3 pr-6 md:pr-10 text-center shadow-md focus:outline-none focus-visible:border-primary-300 focus-visible:ring-1 focus-visible:ring-primary-300 focus-visible:ring-offset-1 focus-visible:ring-offset-primary-300 hover:outline hover:outline-1 hover:outline-primary-300;
   }
 
   .listbox-options {
     @apply absolute mt-1 max-h-60 w-full z-10 bg-neutrals-white overflow-auto rounded-md py-1 shadow-lg ring-1 ring-primary-300 focus:outline-none;
+  }
+
+  /* INPUTS */
+  .input {
+    @apply bg-neutrals-white border border-neutrals-500 rounded-md shadow-md placeholder-neutrals-500 placeholder-opacity-0 focus:outline-none focus:border-neutrals-500 focus:ring-1 focus:ring-neutrals-500 disabled:bg-neutrals-300 disabled:text-neutrals-300 disabled:border-neutrals-300 disabled:shadow-none;
+  }
+
+  .input-invalid {
+    @apply invalid:border-validation-red focus:invalid:border-validation-red focus:invalid:ring-validation-red;
+  }
+
+  .input-label {
+    @apply absolute -top-7 left-0 text-neutrals-900 p3-r transition-all peer-placeholder-shown:text-neutrals-700 peer-placeholder-shown:p2-r peer-placeholder-shown:top-2 peer-placeholder-shown:left-3 peer-focus:-top-7 peer-focus:left-0 peer-focus:text-neutrals-900 peer-focus:p3-r;
   }
 
   /* OTHER */

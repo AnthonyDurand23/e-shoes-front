@@ -2,6 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 import dayjs from 'dayjs';
 import 'dayjs/locale/fr';
 import Head from 'next/head';
+import Link from 'next/link';
 
 import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 import { deleteCart } from '@/slices/dataSlice';
@@ -81,7 +82,12 @@ const Cart = () => {
               <p>{`Total (TVA incluse)`}</p>
               <p>{totalPriceCart.toFixed(2).replace('.', ',')} €</p>
             </div>
-            <button className="bp-sm md:bp-lg min-w-full mt-2 uppercase">Commander</button>
+            <Link
+              href="/commande"
+              className="bp-sm md:bp-lg min-w-full mt-2 flex items-center justify-center uppercase"
+            >
+              Commander
+            </Link>
           </div>
         </div>
       </section>
