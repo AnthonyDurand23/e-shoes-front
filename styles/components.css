@@ -117,4 +117,12 @@
   .cartModal {
     @apply fixed top-[60px] xl:top-[80px] right-0 w-[75%] md:w-[50%] xl:w-[33%] 2xl:w-[25%] h-fit py-4 px-4 z-40 xl:border-l xl:border-b bg-neutrals-100;
   }
+
+  .cart-body {
+    @apply min-h-[calc(100vh-60px-120px)] md:min-h-[calc(100vh-60px-104px)] xl:min-h-[calc(100vh-80px-134px)] p-6 md:p-8 xl:px-0 xl:py-10;
+  }
+
+  .cart-body-container {
+    @apply w-full xl:max-width xl:mx-auto md:flex md:gap-8 xl:gap-16;
+  }
 }

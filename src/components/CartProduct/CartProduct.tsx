@@ -62,7 +62,7 @@ const CartProduct: React.FC<CartProductProps> = ({ product, productIndex }) => {
 
   return (
     <article className="flex gap-4">
-      <div className="relative min-w-[75px] md:min-w-[100px] h-[100px] md:h-[125px]">
+      <div className="relative min-w-[75px] md:min-w-[100px] h-[110px] md:h-[125px]">
         <Link
           href={`/${product.gender === 'mixte' ? 'homme' : product.gender}/${product.id}`}
           onClick={() => dispatch(closeCartModal())}

@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
@@ -14,9 +15,11 @@ import MenuIcon from '../../../public/assets/img/Menu.svg';
 import CartModal from '../CartModal/CartModal';
 
 const Header = () => {
+  const router = useRouter();
   const initialFocusModal = useRef(null);
   const isMobileMenuModalOpen = useTypedSelector((state) => state.interface.isMobileMenuModalOpen);
   const cart = useTypedSelector((state) => state.data.cart);
+  const nbProductsCart = useTypedSelector((state) => state.data.nbProductsCart);
   const dispatch = useTypedDispatch();
 
   return (
@@ -36,7 +39,12 @@ const Header = () => {
               href="/panier"
               className="relative h6 xl:h5 flex items-center gap-1 cursor-pointer hover:scale-105 transition-all duration-200"
               onMouseEnter={() => {
-                if (cart.length !== 0) {
+                if (
+                  cart.length !== 0 &&
+                  typeof window !== 'undefined' &&
+                  window.innerWidth >= 1280 &&
+                  router.pathname !== '/panier'
+                ) {
                   dispatch(openCartModal());
                   dispatch(setOnHoverCartLink(true));
                 }
@@ -44,9 +52,9 @@ const Header = () => {
               onMouseLeave={() => dispatch(setOnHoverCartLink(false))}
             >
               <Image src={CartIcon} alt="icône panier" className="xl:w-[30px]" />
-              {cart.length !== 0 && (
+              {nbProductsCart !== 0 && (
                 <div className="absolute top-0 left-3 xl:left-4 w-[15px] h-[15px] flex justify-center items-center rounded-full bg-primary-700 p4-b">
-                  {cart.length}
+                  {nbProductsCart}
                 </div>
               )}
               Panier

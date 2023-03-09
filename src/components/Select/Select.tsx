@@ -33,7 +33,7 @@ const Select: React.FC<SelectProps> = ({
               {selectedOption.value}
             </span>
             <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-              <ChevronUpDownIcon className="h-3 md:h-5 w-3 md:w-5" aria-hidden="true" />
+              <ChevronUpDownIcon className="h-4 md:h-5 w-4 md:w-5" aria-hidden="true" />
             </span>
           </Listbox.Button>
           <Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
@@ -56,7 +56,7 @@ const Select: React.FC<SelectProps> = ({
                         </span>
                         {selected ? (
                           <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <CheckIcon className="h-3 md:h-5 w-3 md:w-5 text-primary-500" aria-hidden="true" />
+                            <CheckIcon className="h-4 md:h-5 w-4 md:w-5 text-primary-500" aria-hidden="true" />
                           </span>
                         ) : null}
                       </>

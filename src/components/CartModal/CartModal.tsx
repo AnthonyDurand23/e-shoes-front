@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { Fragment, useEffect, useState } from 'react';
+import Link from 'next/link';
 import { Dialog, Transition } from '@headlessui/react';
 import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 
@@ -10,8 +11,8 @@ const CartModal = () => {
   const isCartModalOpen = useTypedSelector((state) => state.interface.isCartModalOpen);
   const onHoverCartLink = useTypedSelector((state) => state.interface.onHoverCartLink);
   const cart = useTypedSelector((state) => state.data.cart);
+  const totalPriceCart = useTypedSelector((state) => state.data.totalPriceCart);
   const [onHoverCartModal, setOnHoverCartModal] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
@@ -23,18 +24,10 @@ const CartModal = () => {
     }
   });
 
-  useEffect(() => {
-    let total = 0;
-    cart.forEach(({ price, quantity }) => {
-      total = total + price * quantity;
-    });
-    setTotalPrice(total);
-  }, [cart]);
-
   return (
     <Transition show={isCartModalOpen} as={Fragment}>
       <Dialog onClose={() => dispatch(closeCartModal())}>
-        {window.innerWidth < 1280 && (
+        {typeof window !== 'undefined' && window.innerWidth < 1280 && (
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -63,7 +56,7 @@ const CartModal = () => {
           >
             <Dialog.Title className="hidden">Mon panier</Dialog.Title>
             <Dialog.Description className="hidden">Affichage du panier</Dialog.Description>
-            <h3 className="mb-4 flex justify-center h6 md:h5 uppercase">Mon Panier</h3>
+            <h3 className="mb-4 flex justify-center h6 md:h5 uppercase">Mon panier</h3>
             {!!cart.length ? (
               <div className="max-h-[50vh] flex flex-col gap-6 overflow-y-auto scrollbar-hidden">
                 {cart.map((product, index) => (
@@ -80,9 +73,15 @@ const CartModal = () => {
               </div>
               <div className="flex justify-between p2-b md:p2-b">
                 <p>Total</p>
-                <p>{totalPrice.toFixed(2).replace('.', ',')} €</p>
+                <p>{totalPriceCart.toFixed(2).replace('.', ',')} €</p>
               </div>
-              <button className="bp-lg min-w-full mt-2 uppercase">Mon panier</button>
+              <Link
+                href="/panier"
+                className="bp-sm md:bp-lg min-w-full mt-2 flex items-center justify-center uppercase"
+                onClick={() => dispatch(closeCartModal())}
+              >
+                Mon panier
+              </Link>
             </div>
           </Dialog.Panel>
         </Transition.Child>
