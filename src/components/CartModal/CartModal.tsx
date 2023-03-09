@@ -16,7 +16,7 @@ const CartModal = () => {
   const dispatch = useTypedDispatch();
 
   useEffect(() => {
-    if (!onHoverCartModal && !onHoverCartLink) {
+    if ((!onHoverCartModal && !onHoverCartLink) || (typeof window !== 'undefined' && window.innerWidth < 1280)) {
       const modalTimer = setTimeout(() => {
         dispatch(closeCartModal());
       }, 2000);

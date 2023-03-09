@@ -62,7 +62,11 @@ const CartProduct: React.FC<CartProductProps> = ({ product, productIndex }) => {
 
   return (
     <article className="flex gap-4">
-      <div className="relative min-w-[75px] md:min-w-[100px] h-[110px] md:h-[125px]">
+      <div
+        className={`relative min-w-[75px] md:min-w-[100px] h-[${isCartModalOpen ? '100px' : '110px'}] md:h-[${
+          isCartModalOpen ? '125px' : '150px'
+        }] ${!isCartModalOpen && 'xl:min-w-[125px] xl:min-h-[160px]'}`}
+      >
         <Link
           href={`/${product.gender === 'mixte' ? 'homme' : product.gender}/${product.id}`}
           onClick={() => dispatch(closeCartModal())}
@@ -76,14 +80,14 @@ const CartProduct: React.FC<CartProductProps> = ({ product, productIndex }) => {
           />
         </Link>
       </div>
-      <div className="w-full flex flex-col gap-2">
-        <div className="flex justify-between items-center p4-b md:p2-b">
+      <div className="w-full flex flex-col gap-2 xl:gap-4">
+        <div className="flex justify-between items-center p4-b md:p2-b xl:p1-b">
           <p>{product.brand}</p>
           <p>{(product.price * product.quantity).toFixed(2).replace('.', ',')} €</p>
         </div>
         <Link
           href={`/${product.gender === 'mixte' ? 'homme' : product.gender}/${product.id}`}
-          className="p4-b md:p2-b uppercase hover:underline"
+          className="p4-b md:p2-b xl:p1-b uppercase hover:underline"
           onClick={() => dispatch(closeCartModal())}
         >
           {product.name}
@@ -101,21 +105,21 @@ const CartProduct: React.FC<CartProductProps> = ({ product, productIndex }) => {
               </div>
             </div>
           ) : (
-            <div>
+            <div className="xl:flex xl:gap-8">
               <Select
                 name="size"
-                classname="relative w-20 mt-1 p4-r md:p2-r"
+                classname="relative w-20 md:w-24 xl:w-28 mt-1 p4-r md:p2-r xl:p1-r"
                 label="Taille :"
-                labelClassname="p4-r md:p2-r"
+                labelClassname="p4-r md:p2-r xl:p1-r"
                 selectedOption={selectedSize}
                 setSelectedOption={setSelectedSize}
                 options={sizes}
               />
               <Select
                 name="quantity"
-                classname="relative w-16 mt-1 p4-r md:p2-r"
+                classname="relative w-16 md:w-20 xl:w-24 mt-1 p4-r md:p2-r xl:p1-r"
                 label="Quantité :"
-                labelClassname="p4-r md:p2-r"
+                labelClassname="p4-r md:p2-r xl:p1-r"
                 selectedOption={selectedQuantity}
                 setSelectedOption={setSelectedQuantity}
                 options={quantities}
@@ -123,7 +127,7 @@ const CartProduct: React.FC<CartProductProps> = ({ product, productIndex }) => {
             </div>
           )}
           <Image
-            className="opacity-70 md:scale-125 cursor-pointer"
+            className="opacity-70 md:scale-125 xl:scale-150 cursor-pointer"
             src={DeleteIcon}
             alt="icône suppression article"
             onClick={() => dispatch(deleteProductToCart(productIndex))}
