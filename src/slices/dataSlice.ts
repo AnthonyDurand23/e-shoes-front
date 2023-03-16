@@ -23,9 +23,11 @@ export const dataSlice = createSlice({
       state.products = action.payload;
     },
     getCartFromLocalStorage: (state) => {
-      state.cart = JSON.parse(localStorage.getItem('cart') || '') || [];
-      state.nbProductsCart = state.cart.map(({ quantity }) => quantity).reduce((a, b) => a + b, 0);
-      state.totalPriceCart = state.cart.map(({ price, quantity }) => price * quantity).reduce((a, b) => a + b, 0);
+      if (localStorage.getItem('cart')) {
+        state.cart = JSON.parse(localStorage.getItem('cart') || '') || [];
+        state.nbProductsCart = state.cart.map(({ quantity }) => quantity).reduce((a, b) => a + b, 0);
+        state.totalPriceCart = state.cart.map(({ price, quantity }) => price * quantity).reduce((a, b) => a + b, 0);
+      }
     },
     addToCart: (state, action: PayloadAction<CartProduct>) => {
       state.cart = [...state.cart, action.payload];

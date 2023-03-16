@@ -10,6 +10,7 @@ interface FormInputProps {
   required: boolean;
   value: string;
   onChange: React.ChangeEventHandler<HTMLInputElement>;
+  classname?: string;
 }
 
 const FormInput: React.FC<FormInputProps> = ({
@@ -22,11 +23,12 @@ const FormInput: React.FC<FormInputProps> = ({
   required,
   value,
   onChange,
+  classname,
 }) => {
   const [focused, setFocused] = useState(false);
 
   return (
-    <div className="relative mt-10">
+    <div className={`relative mt-5 ${classname}`}>
       <input
         className={`peer input mt-1 block w-full px-3 py-2 ${focused && 'input-invalid'}`}
         name={name}
@@ -42,7 +44,7 @@ const FormInput: React.FC<FormInputProps> = ({
       <label htmlFor={name} className="input-label">
         {label}
       </label>
-      <span className={`${focused && 'peer-invalid:block peer-invalid:text-validation-red'} hidden`}>
+      <span className={`${focused && 'peer-invalid:block peer-invalid:p3-r peer-invalid:text-validation-red'} hidden`}>
         {errorMessage}
       </span>
     </div>

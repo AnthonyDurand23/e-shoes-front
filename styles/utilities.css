@@ -87,7 +87,7 @@
 
   /* INPUTS */
   .input {
-    @apply bg-neutrals-white border border-neutrals-500 rounded-md shadow-md placeholder-neutrals-500 placeholder-opacity-0 focus:outline-none focus:border-neutrals-500 focus:ring-1 focus:ring-neutrals-500 disabled:bg-neutrals-300 disabled:text-neutrals-300 disabled:border-neutrals-300 disabled:shadow-none;
+    @apply p2-r xl:p1-r bg-neutrals-white border border-neutrals-500 rounded-md shadow-md placeholder-neutrals-500 placeholder-opacity-0 focus:outline-none focus:border-neutrals-500 focus:ring-1 focus:ring-neutrals-500 disabled:bg-neutrals-300 disabled:text-neutrals-300 disabled:border-neutrals-300 disabled:shadow-none;
   }
 
   .input-invalid {
@@ -95,7 +95,7 @@
   }
 
   .input-label {
-    @apply absolute -top-7 left-0 text-neutrals-900 p3-r transition-all peer-placeholder-shown:text-neutrals-700 peer-placeholder-shown:p2-r peer-placeholder-shown:top-2 peer-placeholder-shown:left-3 peer-focus:-top-7 peer-focus:left-0 peer-focus:text-neutrals-900 peer-focus:p3-r;
+    @apply absolute -top-5 left-0 text-neutrals-900 p3-r transition-all peer-placeholder-shown:text-neutrals-700 peer-placeholder-shown:p2-r peer-placeholder-shown:top-3 peer-placeholder-shown:left-3 peer-focus:-top-5 peer-focus:left-0 peer-focus:text-neutrals-900 peer-focus:p3-r;
   }
 
   /* OTHER */

@@ -133,6 +133,6 @@
   }
 
   .order-body-container {
-    @apply w-full xl:max-width xl:mx-auto md:flex md:gap-4 xl:gap-12;
+    @apply w-full flex justify-center xl:max-width xl:mx-auto md:flex md:gap-4 xl:gap-12;
   }
 }

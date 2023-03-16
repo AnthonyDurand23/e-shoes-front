@@ -52,4 +52,24 @@ export interface inputType {
   label: string;
   pattern?: string;
   required: boolean;
+  classname?: string;
+}
+
+export interface CartOrder {
+  reference: string;
+  size: number;
+  quantity: number;
+}
+
+export interface OrderType {
+  firstname: string;
+  lastname: string;
+  address: string;
+  city: string;
+  zipcode: string;
+  phone: string;
+  email: string;
+  cart: CartOrder[];
+  totalPriceCart: number;
+  paymentId: string;
 }
