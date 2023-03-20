@@ -19,7 +19,7 @@ const MobileMenuModal: React.FC<MobileMenuModalProps> = ({ initialFocusModal }) 
 
   return (
     <Transition show={isMobileMenuModalOpen} as={Fragment}>
-      <Dialog initialFocus={initialFocusModal} onClose={() => dispatch(closeMobileMenuModal())}>
+      <Dialog as="div" initialFocus={initialFocusModal} onClose={() => dispatch(closeMobileMenuModal())}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"

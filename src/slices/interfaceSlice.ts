@@ -4,12 +4,14 @@ interface InterfaceState {
   isMobileMenuModalOpen: boolean;
   isCartModalOpen: boolean;
   onHoverCartLink: boolean;
+  isResultCheckoutModalOpen: boolean;
 }
 
 const initialState: InterfaceState = {
   isMobileMenuModalOpen: false,
   isCartModalOpen: false,
   onHoverCartLink: false,
+  isResultCheckoutModalOpen: false,
 };
 
 export const interfaceSlice = createSlice({
@@ -31,10 +33,23 @@ export const interfaceSlice = createSlice({
     setOnHoverCartLink: (state, action: PayloadAction<boolean>) => {
       state.onHoverCartLink = action.payload;
     },
+    openResultCheckoutModal: (state) => {
+      state.isResultCheckoutModalOpen = true;
+    },
+    closeResultCheckoutModal: (state) => {
+      state.isResultCheckoutModalOpen = false;
+    },
   },
 });
 
-export const { openMobileMenuModal, closeMobileMenuModal, openCartModal, closeCartModal, setOnHoverCartLink } =
-  interfaceSlice.actions;
+export const {
+  openMobileMenuModal,
+  closeMobileMenuModal,
+  openCartModal,
+  closeCartModal,
+  setOnHoverCartLink,
+  openResultCheckoutModal,
+  closeResultCheckoutModal,
+} = interfaceSlice.actions;
 
 export default interfaceSlice.reducer;

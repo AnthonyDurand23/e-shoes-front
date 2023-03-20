@@ -9,6 +9,8 @@ import { usePostOrderMutation } from '@/services/productsApi';
 
 import LoadingIcon from '../../../public/assets/img/Loading.svg';
 import { deleteCart } from '@/slices/dataSlice';
+import ResultCheckoutModal from '../ResultCheckoutModal/ResultCheckoutModal';
+import { openResultCheckoutModal } from '@/slices/interfaceSlice';
 
 const CheckoutForm = () => {
   const dispatch = useTypedDispatch();
@@ -18,16 +20,26 @@ const CheckoutForm = () => {
   const totalPriceCart = useTypedSelector((state) => state.data.totalPriceCart);
   const [postOrder, result] = usePostOrderMutation();
   const [values, setValues] = useState({
-    firstname: 'Marty',
-    lastname: 'MacFly',
-    address: '85 rue Riverside',
-    city: 'Hill Valley',
-    zipcode: '19555',
-    phone: '0123456789',
-    email: 'marty@gmail.fr',
+    // firstname: 'Marty',
+    // lastname: 'MacFly',
+    // address: '85 rue Riverside',
+    // city: 'Hill Valley',
+    // zipcode: '19555',
+    // phone: '0123456789',
+    // email: 'marty@gmail.fr',
+    firstname: '',
+    lastname: '',
+    address: '',
+    city: '',
+    zipcode: '',
+    phone: '',
+    email: '',
   });
   const [paymentErrorMessage, setPaymentErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [resultCheckoutLink, setResultCheckoutLink] = useState('');
+  const [resultCheckoutTitle, setResultCheckoutTitle] = useState('');
+  const [resultCheckoutMessage, setResultCheckoutMessage] = useState('');
 
   const inputs: inputType[] = [
     {
@@ -108,6 +120,20 @@ const CheckoutForm = () => {
     if (result.isSuccess) {
       setIsLoading(false);
       dispatch(deleteCart());
+      setResultCheckoutLink('/');
+      setResultCheckoutTitle('Paiement accepté');
+      setResultCheckoutMessage(
+        'Merci pour votre commande, nous vous avons envoyé un email avec votre numéro de commande et le détails de votre commande.'
+      );
+      dispatch(openResultCheckoutModal());
+    } else if (result.isError) {
+      setIsLoading(false);
+      setResultCheckoutLink('/commande');
+      setResultCheckoutTitle('Paiement refusé');
+      setResultCheckoutMessage(
+        'Nous sommes désolé mais votre paiement a été refusé, veuillez ré-essayer avec un autre moyen de paiement. Merci.'
+      );
+      dispatch(openResultCheckoutModal());
     }
   }, [result]);
 
@@ -140,52 +166,64 @@ const CheckoutForm = () => {
     } else {
       console.log(error.message);
       if (error.message && error.type === 'validation_error') setPaymentErrorMessage(error.message);
+      else {
+        setResultCheckoutLink('/commande');
+        setResultCheckoutTitle('Paiement refusé');
+        setResultCheckoutMessage(
+          'Nous sommes désolé mais un problème est survenu lors du paiement, merci de rentrer à nouveau votre moyen de paiement.'
+        );
+        dispatch(openResultCheckoutModal());
+      }
     }
+    cardElement.clear();
   };
 
   return (
-    <form onSubmit={handleSubmitForm}>
-      <section>
-        <h2 className="mb-3 xl:mb-5 h5 xl:h4">Informations de livraison</h2>
-        <div className="mb-7 grid grid-cols-2 gap-3 xl:gap-5">
-          {inputs.map((input) => (
-            <FormInput
-              key={input.id}
-              name={input.name}
-              type={input.type}
-              placeholder={input.placeholder}
-              errorMessage={input.errorMessage}
-              label={input.label}
-              pattern={input.pattern}
-              required={input.required}
-              value={values[input.name]}
-              onChange={(event) => handleInputChange(event.target.name, event.target.value)}
-              classname={input.classname}
-            />
-          ))}
-        </div>
-      </section>
-      <section>
-        <h2 className="mb-3 xl:mb-5 h5 xl:h4">Informations de paiement</h2>
-        <CardElement
-          options={{ hidePostalCode: true }}
-          className="mt-2 px-3 py-3 xl:py-4 input"
-          onChange={() => setPaymentErrorMessage('')}
-        />
-        {paymentErrorMessage && <span className="p3-r text-validation-red">{paymentErrorMessage}</span>}
-      </section>
-      <button
-        type="submit"
-        disabled={result.isLoading || result.isSuccess}
-        className={`bp-sm md:bp-lg min-w-full mt-7 xl:mt-9 flex items-center justify-center uppercase ${
-          result.isSuccess &&
-          'hover:scale-100 md:hover:scale-100 hover:cursor-default md:hover:cursor-default opacity-70'
-        }`}
-      >
-        {isLoading && <Image className="mr-5 animate-spin" src={LoadingIcon} alt="icône chargement" />}
-        Payer {totalPriceCart.toFixed(2).replace('.', ',')} €
-      </button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmitForm}>
+        <section>
+          <h2 className="mb-3 xl:mb-5 h5 xl:h4">Informations de livraison</h2>
+          <div className="mb-7 grid grid-cols-2 gap-3 xl:gap-5">
+            {inputs.map((input) => (
+              <FormInput
+                key={input.id}
+                name={input.name}
+                type={input.type}
+                placeholder={input.placeholder}
+                errorMessage={input.errorMessage}
+                label={input.label}
+                pattern={input.pattern}
+                required={input.required}
+                value={values[input.name]}
+                onChange={(event) => handleInputChange(event.target.name, event.target.value)}
+                classname={input.classname}
+              />
+            ))}
+          </div>
+        </section>
+        <section>
+          <h2 className="mb-3 xl:mb-5 h5 xl:h4">Informations de paiement</h2>
+          <CardElement
+            options={{ hidePostalCode: true }}
+            className="mt-2 px-3 py-3 xl:py-4 input"
+            onChange={() => setPaymentErrorMessage('')}
+          />
+          {paymentErrorMessage && <span className="p3-r text-validation-red">{paymentErrorMessage}</span>}
+        </section>
+        <button
+          type="submit"
+          disabled={result.isLoading || result.isSuccess}
+          className={`bp-sm md:bp-lg min-w-full mt-7 xl:mt-9 flex items-center justify-center uppercase ${
+            result.isSuccess &&
+            'hover:scale-100 md:hover:scale-100 hover:cursor-default md:hover:cursor-default opacity-70'
+          }`}
+        >
+          {isLoading && <Image className="mr-5 animate-spin" src={LoadingIcon} alt="icône chargement" />}
+          Payer {totalPriceCart.toFixed(2).replace('.', ',')} €
+        </button>
+      </form>
+      <ResultCheckoutModal link={resultCheckoutLink} title={resultCheckoutTitle} message={resultCheckoutMessage} />
+    </div>
   );
 };
 

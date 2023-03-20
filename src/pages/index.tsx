@@ -55,7 +55,7 @@ const Home = () => {
       </section>
       <section className="home-body">
         <div className="home-body-container">
-          <Card
+          {/* <Card
             link="/nouveautes"
             img={FeaturesImg}
             altImageText="photo nouveautés"
@@ -68,7 +68,7 @@ const Home = () => {
             altImageText="photo top ventes"
             title="Top ventes"
             className="home-card home-card--top"
-          />
+          /> */}
           <Card
             link="femme"
             img={WomanShoesImg}

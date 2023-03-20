@@ -41,7 +41,7 @@ const FormInput: React.FC<FormInputProps> = ({
         onChange={onChange}
         onBlur={() => setFocused(true)}
       />
-      <label htmlFor={name} className="input-label">
+      <label htmlFor={name} className="input-label xl:input-label-xl">
         {label}
       </label>
       <span className={`${focused && 'peer-invalid:block peer-invalid:p3-r peer-invalid:text-validation-red'} hidden`}>

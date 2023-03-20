@@ -98,6 +98,10 @@
     @apply absolute -top-5 left-0 text-neutrals-900 p3-r transition-all peer-placeholder-shown:text-neutrals-700 peer-placeholder-shown:p2-r peer-placeholder-shown:top-3 peer-placeholder-shown:left-3 peer-focus:-top-5 peer-focus:left-0 peer-focus:text-neutrals-900 peer-focus:p3-r;
   }
 
+  .input-label-xl {
+    @apply absolute -top-5 left-0 text-neutrals-900 p3-r transition-all peer-placeholder-shown:text-neutrals-700 peer-placeholder-shown:p2-r peer-placeholder-shown:top-3.5 peer-placeholder-shown:left-3 peer-focus:-top-5 peer-focus:left-0 peer-focus:text-neutrals-900 peer-focus:p3-r;
+  }
+
   /* OTHER */
   .max-width {
     @apply max-w-[calc(1280px-5rem)];

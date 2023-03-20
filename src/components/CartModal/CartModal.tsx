@@ -26,7 +26,7 @@ const CartModal = () => {
 
   return (
     <Transition show={isCartModalOpen} as={Fragment}>
-      <Dialog onClose={() => dispatch(closeCartModal())}>
+      <Dialog as="div" onClose={() => dispatch(closeCartModal())}>
         {typeof window !== 'undefined' && window.innerWidth < 1280 && (
           <Transition.Child
             as={Fragment}
@@ -50,13 +50,14 @@ const CartModal = () => {
           leaveTo="transform translate-x-full"
         >
           <Dialog.Panel
-            className="cartModal"
+            className="cart-modal"
             onMouseEnter={() => setOnHoverCartModal(true)}
             onMouseLeave={() => setOnHoverCartModal(false)}
           >
-            <Dialog.Title className="hidden">Mon panier</Dialog.Title>
+            <Dialog.Title as="h3" className="mb-4 flex justify-center h6 md:h5 uppercase">
+              Mon panier
+            </Dialog.Title>
             <Dialog.Description className="hidden">Affichage du panier</Dialog.Description>
-            <h3 className="mb-4 flex justify-center h6 md:h5 uppercase">Mon panier</h3>
             {!!cart.length ? (
               <div className="max-h-[50vh] flex flex-col gap-6 overflow-y-auto scrollbar-hidden">
                 {cart.map((product, index) => (
