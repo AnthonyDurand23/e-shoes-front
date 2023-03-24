@@ -11,6 +11,7 @@ import LoadingIcon from '../../../public/assets/img/Loading.svg';
 import { deleteCart } from '@/slices/dataSlice';
 import ResultCheckoutModal from '../ResultCheckoutModal/ResultCheckoutModal';
 import { openResultCheckoutModal } from '@/slices/interfaceSlice';
+import { getDeliveryDate } from '@/tools/tools';
 
 const CheckoutForm = () => {
   const dispatch = useTypedDispatch();
@@ -20,20 +21,20 @@ const CheckoutForm = () => {
   const totalPriceCart = useTypedSelector((state) => state.data.totalPriceCart);
   const [postOrder, result] = usePostOrderMutation();
   const [values, setValues] = useState({
-    // firstname: 'Marty',
-    // lastname: 'MacFly',
-    // address: '85 rue Riverside',
-    // city: 'Hill Valley',
-    // zipcode: '19555',
-    // phone: '0123456789',
-    // email: 'marty@gmail.fr',
-    firstname: '',
-    lastname: '',
-    address: '',
-    city: '',
-    zipcode: '',
-    phone: '',
-    email: '',
+    firstname: 'Marty',
+    lastname: 'MacFly',
+    address: '85 rue Riverside',
+    city: 'Hill Valley',
+    zipcode: '19555',
+    phone: '0123456789',
+    email: 'thony23@live.fr',
+    // firstname: '',
+    // lastname: '',
+    // address: '',
+    // city: '',
+    // zipcode: '',
+    // phone: '',
+    // email: '',
   });
   const [paymentErrorMessage, setPaymentErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -119,8 +120,8 @@ const CheckoutForm = () => {
     if (result.isLoading) setIsLoading(true);
     if (result.isSuccess) {
       setIsLoading(false);
-      dispatch(deleteCart());
-      setResultCheckoutLink('/');
+      // dispatch(deleteCart());
+      setResultCheckoutLink('/commande');
       setResultCheckoutTitle('Paiement accepté');
       setResultCheckoutMessage(
         'Merci pour votre commande, nous vous avons envoyé un email avec votre numéro de commande et le détails de votre commande.'
@@ -129,10 +130,16 @@ const CheckoutForm = () => {
     } else if (result.isError) {
       setIsLoading(false);
       setResultCheckoutLink('/commande');
-      setResultCheckoutTitle('Paiement refusé');
-      setResultCheckoutMessage(
-        'Nous sommes désolé mais votre paiement a été refusé, veuillez ré-essayer avec un autre moyen de paiement. Merci.'
-      );
+      if ('data' in result.error && result.error.data === 'Paiement échoué') {
+        setResultCheckoutTitle('Paiement refusé');
+        setResultCheckoutMessage(
+          'Nous sommes désolé mais votre paiement a été refusé, veuillez ré-essayer avec un autre moyen de paiement. Merci.'
+        );
+      } else {
+        setResultCheckoutMessage(
+          'Nous sommes désolé mais un problème est survenu lors de votre commande, veuillez ré-essayer. Merci.'
+        );
+      }
       dispatch(openResultCheckoutModal());
     }
   }, [result]);
@@ -153,15 +160,19 @@ const CheckoutForm = () => {
     if (!error) {
       postOrder({
         ...values,
-        cart: cart.map(({ reference, size, quantity }) => {
+        cart: cart.map(({ reference, name, size, quantity, photo, price }) => {
           return {
             reference,
+            name,
             size,
             quantity,
+            photoUrl: `${process.env.NEXT_PUBLIC_CLOUDINARY_URL}${photo}.jpg`,
+            price: (price * quantity).toFixed(2).toString().replace('.', ','),
           };
         }),
-        totalPriceCart,
+        totalPriceCart: Number(totalPriceCart.toFixed(2)),
         paymentId: paymentMethod.id,
+        deliveryDate: getDeliveryDate(),
       });
     } else {
       console.log(error.message);
@@ -175,7 +186,7 @@ const CheckoutForm = () => {
         dispatch(openResultCheckoutModal());
       }
     }
-    cardElement.clear();
+    if (error?.type !== 'validation_error') cardElement.clear();
   };
 
   return (
@@ -212,7 +223,7 @@ const CheckoutForm = () => {
         </section>
         <button
           type="submit"
-          disabled={result.isLoading || result.isSuccess}
+          disabled={result.isLoading || result.isSuccess || !totalPriceCart}
           className={`bp-sm md:bp-lg min-w-full mt-7 xl:mt-9 flex items-center justify-center uppercase ${
             result.isSuccess &&
             'hover:scale-100 md:hover:scale-100 hover:cursor-default md:hover:cursor-default opacity-70'

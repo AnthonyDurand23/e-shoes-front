@@ -8,7 +8,7 @@ export const productsApi = createApi({
     getProducts: builder.query<ProductType[], null>({
       query: () => 'produits',
     }),
-    postOrder: builder.mutation<null, OrderType>({
+    postOrder: builder.mutation<string, OrderType>({
       query: ({ ...order }) => ({
         url: 'order',
         method: 'POST',

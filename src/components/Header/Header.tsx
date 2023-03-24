@@ -7,7 +7,7 @@ import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 import NavBar from '../NavBar/NavBar';
 import MobileMenuModal from '../MobileMenuModal/MobileMenuModal';
 
-import { openCartModal, openMobileMenuModal, setOnHoverCartLink } from '@/slices/interfaceSlice';
+import { closeCartModal, openCartModal, openMobileMenuModal, setOnHoverCartLink } from '@/slices/interfaceSlice';
 
 import Logo from '../../../public/assets/img/Logo_e-shoes.png';
 import CartIcon from '../../../public/assets/img/Shopping_cart.svg';
@@ -38,13 +38,9 @@ const Header = () => {
             <Link
               href="/panier"
               className="relative h6 xl:h5 flex items-center gap-1 cursor-pointer hover:scale-105 transition-all duration-200"
+              onClick={() => dispatch(closeCartModal())}
               onMouseEnter={() => {
-                if (
-                  cart.length !== 0 &&
-                  typeof window !== 'undefined' &&
-                  window.innerWidth >= 1280 &&
-                  router.pathname !== '/panier'
-                ) {
+                if (cart.length !== 0 && router.pathname !== '/panier') {
                   dispatch(openCartModal());
                   dispatch(setOnHoverCartLink(true));
                 }

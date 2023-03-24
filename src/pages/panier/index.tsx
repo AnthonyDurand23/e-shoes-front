@@ -1,32 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
-import dayjs from 'dayjs';
-import 'dayjs/locale/fr';
+
 import Head from 'next/head';
 import Link from 'next/link';
 
 import { useTypedDispatch, useTypedSelector } from '@/hooks/reduxHooks';
 import { deleteCart } from '@/slices/dataSlice';
+import { getDeliveryDate } from '@/tools/tools';
 
 import CartProduct from '@/components/CartProduct/CartProduct';
-
-dayjs.locale('fr');
 
 const Cart = () => {
   const cart = useTypedSelector((state) => state.data.cart);
   const nbProductsCart = useTypedSelector((state) => state.data.nbProductsCart);
   const totalPriceCart = useTypedSelector((state) => state.data.totalPriceCart);
   const dispatch = useTypedDispatch();
-
-  const getDeliveryDate = () => {
-    let deliveryTime = 3;
-    if (dayjs().add(deliveryTime, 'day').format('dddd') === 'dimanche') deliveryTime = 4;
-    return dayjs()
-      .add(deliveryTime, 'day')
-      .format('dddd D MMMM')
-      .split(' ')
-      .map((el) => el.charAt(0).toUpperCase() + el.substring(1).toLowerCase())
-      .join(' ');
-  };
 
   return (
     <>

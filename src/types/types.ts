@@ -57,8 +57,11 @@ export interface inputType {
 
 export interface CartOrder {
   reference: string;
+  name: string;
   size: number;
   quantity: number;
+  photoUrl: string;
+  price: string;
 }
 
 export interface OrderType {
@@ -72,4 +75,5 @@ export interface OrderType {
   cart: CartOrder[];
   totalPriceCart: number;
   paymentId: string;
+  deliveryDate: string;
 }

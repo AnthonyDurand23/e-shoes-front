@@ -38,13 +38,13 @@ const NavBar = () => {
       >
         Enfant
       </Link>
-      <Link
+      {/* <Link
         href="/a-propos'"
         className={router.pathname === '/a-propos' ? 'navbar-active' : ''}
         onClick={() => dispatch(closeMobileMenuModal())}
       >
         A propos
-      </Link>
+      </Link> */}
       <Link
         href="/contact"
         className={router.pathname === '/contact' ? 'navbar-active' : ''}

@@ -6,8 +6,8 @@ import Card from '../components/Card/Card';
 
 import HeroImg from '../../public/assets/img/Hero.jpg';
 import ArrowForwardIcon from '../../public/assets/img/Arrow_forward.svg';
-import FeaturesImg from '../../public/assets/img/Features.jpg';
-import BestSellersImg from '../../public/assets/img/Best_sellers.jpg';
+// import FeaturesImg from '../../public/assets/img/Features.jpg';
+// import BestSellersImg from '../../public/assets/img/Best_sellers.jpg';
 import WomanShoesImg from '../../public/assets/img/Woman_shoes.jpg';
 import ManShoesImg from '../../public/assets/img/Man_shoes.jpg';
 import ChildShoesImg from '../../public/assets/img/Child_shoes.jpg';
