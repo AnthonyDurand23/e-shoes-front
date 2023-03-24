@@ -33,7 +33,7 @@ const NavBar = () => {
       </Link>
       <Link
         href="/enfant"
-        className={router.pathname === 'enfant' ? 'navbar-active' : ''}
+        className={router.pathname === '/enfant' ? 'navbar-active' : ''}
         onClick={() => dispatch(closeMobileMenuModal())}
       >
         Enfant

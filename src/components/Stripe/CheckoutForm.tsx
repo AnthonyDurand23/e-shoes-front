@@ -21,20 +21,20 @@ const CheckoutForm = () => {
   const totalPriceCart = useTypedSelector((state) => state.data.totalPriceCart);
   const [postOrder, result] = usePostOrderMutation();
   const [values, setValues] = useState({
-    firstname: 'Marty',
-    lastname: 'MacFly',
-    address: '85 rue Riverside',
-    city: 'Hill Valley',
-    zipcode: '19555',
-    phone: '0123456789',
-    email: 'thony23@live.fr',
-    // firstname: '',
-    // lastname: '',
-    // address: '',
-    // city: '',
-    // zipcode: '',
-    // phone: '',
-    // email: '',
+    // firstname: 'Marty',
+    // lastname: 'MacFly',
+    // address: '85 rue Riverside',
+    // city: 'Hill Valley',
+    // zipcode: '19555',
+    // phone: '0123456789',
+    // email: 'thony23@live.fr',
+    firstname: '',
+    lastname: '',
+    address: '',
+    city: '',
+    zipcode: '',
+    phone: '',
+    email: '',
   });
   const [paymentErrorMessage, setPaymentErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -120,8 +120,8 @@ const CheckoutForm = () => {
     if (result.isLoading) setIsLoading(true);
     if (result.isSuccess) {
       setIsLoading(false);
-      // dispatch(deleteCart());
-      setResultCheckoutLink('/commande');
+      dispatch(deleteCart());
+      setResultCheckoutLink('/');
       setResultCheckoutTitle('Paiement accepté');
       setResultCheckoutMessage(
         'Merci pour votre commande, nous vous avons envoyé un email avec votre numéro de commande et le détails de votre commande.'

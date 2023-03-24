@@ -139,4 +139,13 @@
   .result-checkout-modal {
     @apply w-full max-w-md flex flex-col items-center gap-4 transform overflow-hidden rounded-2xl bg-primary-300 p-6 shadow-xl transition-all;
   }
+
+  /* CONTACT PAGE */
+  .contact-body {
+    @apply min-h-[calc(100vh-60px-120px)] md:min-h-[calc(100vh-60px-104px)] xl:min-h-[calc(100vh-80px-134px)] p-6 md:p-8 xl:px-0 xl:py-10;
+  }
+
+  .contact-body-container {
+    @apply w-full xl:max-width xl:mx-auto;
+  }
 }
